@@ -405,15 +405,40 @@ const handleProfileImageError = (e) => {
                             </Link>
 
                             <!-- Language Switcher -->
-                            <div class="relative ml-1">
-                                <select
-                                    :value="currentLocale"
-                                    @change="changeLanguage($event.target.value)"
-                                    class="rounded-[7px] border border-slate-300 bg-white p-1 px-2 text-[13px] font-normal text-[#495057] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 outline-none cursor-pointer"
+                            <div class="relative nav-dropdown-container ml-1">
+                                <button
+                                    @click="toggleDropdown('language')"
+                                    class="flex items-center gap-1.5 border border-slate-300 rounded-[7px] bg-white dark:bg-slate-800 p-1 px-2.5 text-[13px] font-normal text-[#495057] hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150 dark:border-slate-700 dark:text-slate-300"
+                                    title="Language"
                                 >
-                                    <option value="en">English</option>
-                                    <option value="bn">বাংলা</option>
-                                </select>
+                                    <span>{{ currentLocale === 'en' ? 'English' : 'বাংলা' }}</span>
+                                    <svg class="h-1.5 w-2 ml-0.5 fill-current opacity-70 self-center" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0l5 6 5-6z" />
+                                    </svg>
+                                </button>
+                                <div
+                                    v-show="activeDropdown === 'language'"
+                                    class="absolute right-0 mt-1 w-32 rounded-lg border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-800 dark:bg-slate-900 transition-all z-[60]"
+                                >
+                                    <button
+                                        @click="changeLanguage('en'); closeAllDropdowns();"
+                                        class="flex items-center justify-between w-full px-4 py-2 text-[14px] text-left text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-150"
+                                    >
+                                        <span :class="{'font-semibold text-sky-600 dark:text-sky-400': currentLocale === 'en'}">English</span>
+                                        <svg v-if="currentLocale === 'en'" class="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </button>
+                                    <button
+                                        @click="changeLanguage('bn'); closeAllDropdowns();"
+                                        class="flex items-center justify-between w-full px-4 py-2 text-[14px] text-left text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-150"
+                                    >
+                                        <span :class="{'font-semibold text-sky-600 dark:text-sky-400': currentLocale === 'bn'}">বাংলা</span>
+                                        <svg v-if="currentLocale === 'bn'" class="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
                             <!-- Dark/Light Theme Toggle -->

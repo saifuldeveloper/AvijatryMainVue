@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ActivityLogController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -51,6 +52,11 @@ Route::middleware('auth')->group(function () {
         session(['theme' => $newTheme]);
         return back();
     })->name('theme.toggle');
+
+    // Activity Log & Trash list routes
+    Route::get('activity-log', [ActivityLogController::class, 'index'])->name('activity.log');
+    Route::get('trash-list', [ActivityLogController::class, 'trashList'])->name('trash.list');
+    Route::get('/view-soft-delete-activity-log/{activity}', [ActivityLogController::class, 'viewSoftDeleteActivityLog'])->name('view.soft-delete.activity-log');
 });
 
 require __DIR__.'/auth.php';
