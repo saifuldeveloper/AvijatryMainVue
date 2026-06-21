@@ -67,11 +67,13 @@ class HandleInertiaRequests extends Middleware
                 $menu = trans('menu', [], $locale);
                 $pages = trans('pages', [], $locale);
                 $main = trans('main', [], $locale);
+                $permission = trans('permission', [], $locale);
                 
                 return [
                     'menu' => is_array($menu) ? $menu : [],
                     'pages' => is_array($pages) ? $pages : [],
                     'main' => is_array($main) ? $main : [],
+                    'permission' => is_array($permission) ? $permission : [],
                 ];
             },
         ];

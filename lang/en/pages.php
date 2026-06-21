@@ -663,6 +663,7 @@ return [
     'Assign Direct Permission' => 'Assign Direct Permission',
     'All Permission' => 'All Permission',
     'email' => 'Email',
+    'phone' => 'Phone',
     'Salary Adjustments history' => 'Salary Adjustments history',
     'Salary Adjustments' => 'Salary Adjustments',
     'Old Salary' => 'Old Salary',

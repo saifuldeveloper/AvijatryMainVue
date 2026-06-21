@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,6 +20,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Settings Routes
+    Route::prefix('setting')->group(function () {
+        Route::get('/users', [SettingController::class, 'users'])->name('setting.users');
+        Route::post('/user/store', [SettingController::class, 'userStore'])->name('setting.user.store');
+        Route::post('/user/update/{user}', [SettingController::class, 'userUpdate'])->name('setting.user.update');
+        Route::delete('/user/delete/{user}', [SettingController::class, 'userDelete'])->name('setting.user.delete');
+        Route::post('/user/restore/{id}', [SettingController::class, 'userRestore'])->name('setting.user.restore');
+        Route::delete('/user/force-delete/{id}', [SettingController::class, 'userForceDelete'])->name('setting.user.force-delete');
+
+        Route::get('/roles', [SettingController::class, 'roles'])->name('setting.roles');
+        Route::post('/role/store', [SettingController::class, 'roleStore'])->name('setting.role.store');
+        Route::post('/role/update/{role}', [SettingController::class, 'roleUpdate'])->name('setting.role.update');
+        Route::delete('/role/delete/{role}', [SettingController::class, 'roleDelete'])->name('setting.role.delete');
+    });
 
     // Language switcher route
     Route::get('/change-language', function () {
