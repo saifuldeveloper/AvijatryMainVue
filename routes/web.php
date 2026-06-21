@@ -22,6 +22,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Custom Profile Routes
+    Route::get('user/profile', [ProfileController::class, 'profile'])->name('user.profile');
+    Route::post('user/profile/update', [ProfileController::class, 'profileUpdate'])->name('user.profile.update');
+
+    // Custom Password Change Routes
+    Route::get('change/password', [ProfileController::class, 'changePasswordGet'])->name('change.password');
+    Route::post('change/password/update', [ProfileController::class, 'changePasswordUpdate'])->name('change.password.update');
+
+    // GET Logout Route
+    Route::get('logout', [ProfileController::class, 'logout'])->name('app.logout');
+
     // Settings Routes
     Route::prefix('setting')->group(function () {
         Route::get('/users', [SettingController::class, 'users'])->name('setting.users');

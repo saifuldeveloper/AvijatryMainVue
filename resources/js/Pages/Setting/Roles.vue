@@ -353,7 +353,7 @@ const deleteRole = (id) => {
                 <form @submit.prevent="submitForm" class="flex-1 overflow-y-auto p-5 space-y-6">
                     <!-- User Type Name Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.name') }} <span class="text-rose-500">*</span>
                         </label>
                         <input
@@ -440,7 +440,7 @@ const deleteRole = (id) => {
                         <button
                             type="submit"
                             :disabled="form.processing"
-                            class="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-650 hover:from-blue-700 hover:to-indigo-750 text-white rounded font-semibold shadow-md shadow-blue-500/10 hover:shadow-lg disabled:opacity-50 transition-all"
+                            class="px-4 py-2 bg-[#007bff] hover:bg-[#0069d9] text-white font-semibold rounded text-sm transition duration-150 shadow-sm disabled:opacity-50"
                         >
                             {{ isEditing ? t('pages.update') : t('pages.save') }}
                         </button>

@@ -576,8 +576,8 @@ html, body, select, input, textarea, button, a, span, div, p, h1, h2, h3, h4, h5
 .profile-pic {
     display: inline-block;
     vertical-align: middle;
-    width: 40px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
     overflow: hidden;
     border-radius: 50%;
 }
