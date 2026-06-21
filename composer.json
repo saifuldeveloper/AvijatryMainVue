@@ -8,9 +8,11 @@
     "require": {
         "php": "^8.3",
         "inertiajs/inertia-laravel": "^2.0",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^13.8",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
+        "spatie/laravel-activitylog": "^4.12",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
@@ -28,7 +30,12 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helper/helpers.php",
+            "app/Helper/retailer.php",
+            "app/Helper/report.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

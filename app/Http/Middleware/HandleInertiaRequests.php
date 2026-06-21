@@ -31,9 +31,49 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
+            'appName' => config('app.name'),
             'auth' => [
                 'user' => $request->user(),
             ],
+            'stats' => [
+                'commitments_count' => function () {
+                    try {
+                        if (\Illuminate\Support\Facades\Schema::hasTable('commitments')) {
+                            return \Illuminate\Support\Facades\DB::table('commitments')
+                                ->whereDate('commitment_date', now()->toDateString())
+                                ->count();
+                        }
+                    } catch (\Exception $e) {}
+                    return 0;
+                },
+                'trash_count' => function () {
+                    try {
+                        if (function_exists('unViewedSoftDeleteActivityLogs')) {
+                            return unViewedSoftDeleteActivityLogs();
+                        }
+                    } catch (\Exception $e) {}
+                    return 0;
+                },
+            ],
+            'locale' => function () {
+                return session('locale', app()->getLocale());
+            },
+            'theme' => function () {
+                return session('theme', 'light');
+            },
+            'translations' => function () {
+                $locale = session('locale', app()->getLocale());
+                
+                $menu = trans('menu', [], $locale);
+                $pages = trans('pages', [], $locale);
+                $main = trans('main', [], $locale);
+                
+                return [
+                    'menu' => is_array($menu) ? $menu : [],
+                    'pages' => is_array($pages) ? $pages : [],
+                    'main' => is_array($main) ? $main : [],
+                ];
+            },
         ];
     }
 }

@@ -1,3 +1,210 @@
+@font-face {
+    font-family: 'SolaimanLipi';
+    src: url('../fonts/SolaimanLipi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SolaimanLipi';
+    src: url('../fonts/SolaimanLipi_Bold_10-03-12.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nikosh';
+    src: url('../fonts/Nikosh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================
+   Dark Theme overrides to match original project
+   ========================================== */
+.dark body, .dark .min-h-screen {
+    background-color: #121212 !important;
+    color: #ffffff;
+}
+
+.dark nav, .dark .navbar {
+    background-color: #242434 !important;
+    border-color: #44445c !important;
+}
+
+/* Dropdown menus */
+.dark .absolute.bg-white, .dark .dropdown-menu {
+    background-color: #2a2a3c !important;
+    color: #ffffff !important;
+    border-color: #44445c !important;
+}
+
+.dark .absolute.bg-white a, .dark .dropdown-item {
+    color: #f1f1f1 !important;
+}
+
+.dark .absolute.bg-white a:hover, .dark .dropdown-item:hover,
+.dark .absolute.bg-white a:focus, .dark .dropdown-item:focus {
+    background-color: #383854 !important;
+    color: #ffffff !important;
+}
+
+/* Forms and Inputs */
+.dark form {
+    color: #ffffff;
+}
+
+.dark input, .dark select, .dark textarea {
+    background-color: #1e1e30 !important;
+    color: #f8f9fa !important;
+    border: 1px solid #717171de !important;
+}
+
+.dark input::placeholder, .dark textarea::placeholder {
+    color: #aaaaaa;
+}
+
+.dark .form-control-plaintext {
+    color: #ffffff;
+}
+
+/* Cards */
+.dark .card, .dark .bg-white.shadow-sm, .dark .bg-white.overflow-hidden {
+    background-color: #2a2a3c !important;
+    color: #f1f1f1 !important;
+    border-color: #717171de !important;
+}
+
+.dark .card-body, .dark .p-6.text-gray-900 {
+    background-color: #2a2a3c !important;
+    color: #dddddd !important;
+}
+
+.dark .card-header, .dark .card-footer, .dark .modal-header, .dark .modal-footer {
+    background-color: #242434 !important;
+    border-color: #717171de !important;
+}
+
+/* Tables */
+.dark table {
+    color: white !important;
+}
+
+.dark table thead {
+    background-color: #383854 !important;
+}
+
+.dark table, .dark th, .dark td {
+    border-color: #44445c !important;
+}
+
+.dark tr {
+    border-bottom: 1px solid #44445c !important;
+}
+
+.dark td {
+    color: #ffffff !important;
+}
+
+/* Modals */
+.dark .modal-content {
+    background-color: #2a2a3c !important;
+    color: #f1f1f1 !important;
+    border: 1px solid #717171de !important;
+}
+
+.dark .modal-title {
+    color: #f8f9fa !important;
+}
+
+.dark .btn-close {
+    filter: invert(1) !important;
+}
+
+/* General bg utility overrides */
+.dark .bg-light {
+    background-color: #202030 !important;
+}
+
+.dark .text-dark {
+    color: #f8f9fa !important;
+}
+
+.dark .product-info-box span {
+    color: #f8f9fa !important;
+}
+
+/* ==========================================================================
+   Bootstrap 4 Typography and Element Defaults (Font Size & Weight Matching)
+   ========================================================================== */
+html, body {
+    font-family: 'Nunito', 'Noto Sans Bengali', 'SolaimanLipi', 'Nikosh', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: 'Nunito', 'Noto Sans Bengali', 'SolaimanLipi', 'Nikosh', sans-serif !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.5rem;
+}
+
+h1, .h1 {
+    font-size: 2.5rem !important; /* 40px */
+}
+
+h2, .h2 {
+    font-size: 2rem !important; /* 32px */
+}
+
+h3, .h3 {
+    font-size: 1.75rem !important; /* 28px */
+}
+
+h4, .h4 {
+    font-size: 1.5rem !important; /* 24px */
+}
+
+h5, .h5 {
+    font-size: 1.25rem !important; /* 20px */
+}
+
+h6, .h6 {
+    font-size: 1rem !important; /* 16px */
+}
+
+small, .small {
+    font-size: 60% !important;
+    font-weight: 400 !important;
+}
+
+/* Inputs, Selects, Textareas default size and weight matching Bootstrap */
+input, select, textarea, button {
+    font-family: 'Nunito', 'Noto Sans Bengali', 'SolaimanLipi', 'Nikosh', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+/* Table text size and weight defaults */
+table {
+    font-size: 16px !important;
+}
+
+table th {
+    font-weight: 700 !important;
+}
+
+table td {
+    font-weight: 400 !important;
+}
+
+/* Global font family override to ensure exact font matching across all views */
+html, body, select, input, textarea, button, a, span, div, p, h1, h2, h3, h4, h5, h6, table, th, td {
+    font-family: 'Nunito', 'Noto Sans Bengali', 'SolaimanLipi', 'Nikosh', sans-serif !important;
+}
+

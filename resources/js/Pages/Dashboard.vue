@@ -1,30 +1,29 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+
+const page = usePage();
+const currentLocale = computed(() => page.props.locale || 'en');
+
+const t = computed(() => {
+    const sharedMain = page.props.translations?.main || {};
+    return {
+        erp_software: sharedMain.erp_software || 'ERP Software',
+        modernity_in_personality: sharedMain.modernity_in_personality || 'Modernity in Personality'
+    };
+});
 </script>
 
 <template>
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200"
-            >
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div
-                    class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800"
-                >
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You're logged in!
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h1 class="text-[40px] font-bold text-slate-800 dark:text-slate-100 tracking-tight mt-2 mb-4 leading-tight">
+            {{ t.erp_software }}
+            <small class="text-[24px] font-normal text-slate-500 dark:text-slate-400 ml-2">
+                {{ t.modernity_in_personality }}
+            </small>
+        </h1>
     </AuthenticatedLayout>
 </template>

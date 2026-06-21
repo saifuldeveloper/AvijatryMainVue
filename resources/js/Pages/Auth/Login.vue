@@ -33,66 +33,76 @@ const submit = () => {
     <GuestLayout>
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-emerald-600 dark:text-emerald-400">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="space-y-6">
+            <!-- Email Input -->
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Email Address" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400" />
 
                 <TextInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="mt-1.5 block w-full"
                     v-model="form.email"
                     required
                     autofocus
+                    placeholder="name@company.com"
                     autocomplete="username"
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <!-- Password Input -->
+            <div>
+                <div class="flex items-center justify-between">
+                    <InputLabel for="password" value="Password" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400" />
+                    
+                    <Link
+                        v-if="canResetPassword"
+                        :href="route('password.request')"
+                        class="text-xs font-medium text-indigo-600 hover:text-indigo-500 hover:underline focus:outline-none dark:text-indigo-400 dark:hover:text-indigo-300"
+                    >
+                        Forgot password?
+                    </Link>
+                </div>
 
                 <TextInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1.5 block w-full"
                     v-model="form.password"
                     required
+                    placeholder="••••••••"
                     autocomplete="current-password"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="mt-4 block">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
-                        >Remember me</span
-                    >
+            <!-- Remember Me -->
+            <div class="flex items-center">
+                <Checkbox id="remember" name="remember" v-model:checked="form.remember" class="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-800 dark:bg-slate-950 dark:focus:ring-offset-slate-900" />
+                <label for="remember" class="ms-2 text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer select-none">
+                    Keep me signed in
                 </label>
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
-                >
-                    Forgot your password?
-                </Link>
-
+            <!-- Submit Button -->
+            <div>
                 <PrimaryButton
-                    class="ms-4"
+                    class="w-full py-3.5"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Log in
+                    <svg v-if="form.processing" class="animate-spin -ms-1 me-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Sign In to Dashboard</span>
                 </PrimaryButton>
             </div>
         </form>
