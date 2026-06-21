@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\SizeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -47,6 +50,20 @@ Route::middleware('auth')->group(function () {
         Route::post('/role/update/{role}', [SettingController::class, 'roleUpdate'])->name('setting.role.update');
         Route::delete('/role/delete/{role}', [SettingController::class, 'roleDelete'])->name('setting.role.delete');
     });
+
+    // Category, Color, Size Routes
+    Route::resource('category', CategoryController::class)->except(['show']);
+    Route::delete('category/{id}/force-delete', [CategoryController::class, 'forceDelete'])->name('category.forceDelete');
+    Route::post('category/{id}/restore', [CategoryController::class, 'restore'])->name('category.restore');
+    Route::get('get/subcategory', [CategoryController::class, 'getSubCategory'])->name('get.subcategory');
+
+    Route::resource('color', ColorController::class)->except(['show']);
+    Route::delete('color/{id}/force-delete', [ColorController::class, 'forceDelete'])->name('color.forceDelete');
+    Route::post('color/{id}/restore', [ColorController::class, 'restore'])->name('color.restore');
+
+    Route::resource('size', SizeController::class)->except(['show']);
+    Route::delete('size/{id}/force-delete', [SizeController::class, 'forceDelete'])->name('size.forceDelete');
+    Route::post('size/{id}/restore', [SizeController::class, 'restore'])->name('size.restore');
 
     // Language switcher route
     Route::get('/change-language', function () {
