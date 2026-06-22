@@ -180,9 +180,9 @@ const forceDeleteColor = (id) => {
 
     <AuthenticatedLayout>
         <!-- Colors Layout Card -->
-        <div class="max-w-4xl mx-auto border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Header -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h3 class="text-[20px] font-bold text-slate-800 dark:text-white">
                     {{ t('shoe_colors') }}
                 </h3>
@@ -194,7 +194,7 @@ const forceDeleteColor = (id) => {
                             v-model="searchQuery"
                             type="text"
                             :placeholder="t('Search colors...')"
-                            class="w-full rounded border-slate-250 bg-white px-3 py-1.5 pl-9 text-[15px] text-slate-700 placeholder-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-650 dark:bg-slate-900 dark:text-slate-200 dark:placeholder-slate-500"
+                            class="w-full rounded border-slate-300 bg-white px-3 py-1.5 pl-9 text-[15px] text-slate-700 placeholder-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-650 dark:bg-slate-900 dark:text-slate-200 dark:placeholder-slate-500"
                         />
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 pointer-events-none">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -272,8 +272,8 @@ const forceDeleteColor = (id) => {
         </div>
 
         <!-- Trash Section (Soft Deleted Colors) -->
-        <div v-if="trashColor.length > 0" class="max-w-4xl mx-auto border-t-[3px] border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
-            <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50">
+        <div v-if="trashColor.length > 0" class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+            <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h4 class="text-[17px] font-bold text-slate-800 dark:text-white">
                     {{ t('Trash Bin') }} ({{ t('Deleted Color List') || 'মুছে ফেলা তালিকা' }})
                 </h4>

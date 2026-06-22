@@ -231,9 +231,9 @@ const forceDeleteSize = (id) => {
 
     <AuthenticatedLayout>
         <!-- Sizes Layout Card -->
-        <div class="max-w-4xl mx-auto border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Header (matching previous project layout) -->
-            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <div class="flex items-baseline gap-2.5">
                     <h3 class="text-[20px] font-bold text-slate-800 dark:text-white">
                         {{ t('shoe_sizes') }}
@@ -368,8 +368,8 @@ const forceDeleteSize = (id) => {
         </div>
 
         <!-- Trash Section (Soft Deleted Sizes) -->
-        <div v-if="trashSize.length > 0" class="max-w-4xl mx-auto border-t-[3px] border-t-rose-500 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
-            <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50">
+        <div v-if="trashSize.length > 0" class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+            <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h4 class="text-[17px] font-bold text-slate-800 dark:text-white">
                     {{ t('Trash Bin') }} ({{ t('Deleted Size List') || 'মুছে ফেলা তালিকা' }})
                 </h4>

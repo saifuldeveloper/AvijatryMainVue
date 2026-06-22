@@ -189,9 +189,9 @@ const toggleFilter = () => {
 
     <AuthenticatedLayout>
         <!-- Card Container styled like AdminLTE card-primary card-outline -->
-        <div class="border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Card Header -->
-            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[#f8f9fa] dark:bg-[#242434]">
+            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h2 class="text-xl font-bold text-slate-850 dark:text-white m-0 leading-tight">
                     {{ t('pages.activity_log') }}
                 </h2>
@@ -376,7 +376,7 @@ const toggleFilter = () => {
                                     {{ log.message }}
                                 </td>
                                 <td class="p-3 border-r border-slate-200 dark:border-slate-700/60 text-xs">
-                                    <div class="font-semibold text-slate-800 dark:text-slate-250">{{ log.os }}</div>
+                                    <div class="font-semibold text-slate-800 dark:text-slate-200">{{ log.os }}</div>
                                     <div class="text-slate-400 dark:text-slate-500 font-medium">{{ log.browser }}</div>
                                 </td>
                                 <td class="p-3 border-r border-slate-200 dark:border-slate-700/60 text-xs font-medium text-slate-500 dark:text-slate-400">

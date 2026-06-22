@@ -8,6 +8,11 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\SizeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\AssetBookController;
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\LiabilitiesController;
+use App\Http\Controllers\ZakatController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -19,6 +24,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/user/restore/{id}', [SettingController::class, 'userRestore'])->name('setting.user.restore');
         Route::delete('/user/force-delete/{id}', [SettingController::class, 'userForceDelete'])->name('setting.user.force-delete');
 
+        // role permission
         Route::get('/roles', [SettingController::class, 'roles'])->name('setting.roles');
         Route::post('/role/store', [SettingController::class, 'roleStore'])->name('setting.role.store');
         Route::post('/role/update/{role}', [SettingController::class, 'roleUpdate'])->name('setting.role.update');
@@ -85,6 +93,44 @@ Route::middleware('auth')->group(function () {
     Route::get('activity-log', [ActivityLogController::class, 'index'])->name('activity.log');
     Route::get('trash-list', [ActivityLogController::class, 'trashList'])->name('trash.list');
     Route::get('/view-soft-delete-activity-log/{activity}', [ActivityLogController::class, 'viewSoftDeleteActivityLog'])->name('view.soft-delete.activity-log');
+
+    // Notes Routes
+    Route::resource('notes', NoteController::class);
+    Route::post('notes/{id}/restore', [NoteController::class, 'restore'])->name('notes.restore');
+    Route::delete('notes/{id}/force-delete', [NoteController::class, 'forceDelete'])->name('notes.forceDelete');
+
+    // Asset Book / Asset Account Routes
+    Route::resource('asset-book', AssetBookController::class);
+    Route::post('asset-book/{id}/restore', [AssetBookController::class, 'restore'])->name('asset.types.restore');
+    Route::delete('asset-book/{id}/force-delete', [AssetBookController::class, 'forceDelete'])->name('asset.types.forceDelete');
+
+    // Assets Routes
+    Route::resource('assets', AssetController::class);
+    Route::post('assets/{id}/restore', [AssetController::class, 'restore'])->name('assets.restore');
+    Route::delete('assets/{id}/force-delete', [AssetController::class, 'forceDelete'])->name('assets.forceDelete');
+
+    // Zakat Routes
+    Route::get('zakat', [ZakatController::class, 'zakatpage'])->name('zakat.page');
+    Route::post('zakat/store', [ZakatController::class, 'zakatStore'])->name('zakat.store');
+    Route::get('zakat/caculate/list', [ZakatController::class, 'zakatCalculateList'])->name('zakat.calculate.list');
+    Route::delete('zakat/caculate/destroy/{id}', [ZakatController::class, 'zakatCalculateDestroy'])->name('zakat.calculate.destroy');
+    Route::post('zakat/caculate/restore/{id}', [ZakatController::class, 'zakatCalculateRestore'])->name('zakat.calculate.restore');
+    Route::delete('zakat/caculate/force-delete/{id}', [ZakatController::class, 'zakatCalculateForceDelete'])->name('zakat.calculate.forceDelete');
+
+    // Liabilities Routes
+    Route::get('get-liabilities', [LiabilitiesController::class, 'getLiabilities'])->name('get-liabilities');
+    Route::resource('liabilities', LiabilitiesController::class);
+    Route::post('liabilities/{id}/restore', [LiabilitiesController::class, 'restore'])->name('liabilities.restore');
+    Route::delete('liabilities/{id}/force-delete', [LiabilitiesController::class, 'forceDelete'])->name('liabilities.forceDelete');
+
+    Route::get('liabilities/entry/create', [LiabilitiesController::class, 'entry'])->name('liabilities.entry.create');
+    Route::post('liabilities/entry/store', [LiabilitiesController::class, 'entryStore'])->name('liabilities.entry.store');
+    Route::get('liabilities/entry/edit/{id}', [LiabilitiesController::class, 'entryEdit'])->name('liabilities.entry.edit');
+    Route::put('liabilities/entry/update/{id}', [LiabilitiesController::class, 'entryUpdate'])->name('liabilities.entry.update');
+    Route::delete('liabilities/entry/destory/{id}', [LiabilitiesController::class, 'entryDestroy'])->name('liabilities.entry.destroy');
+    Route::post('liabilities/entry/restore/{id}', [LiabilitiesController::class, 'entryRestore'])->name('liabilities.entry.restore');
+    Route::delete('liabilities/entry/force-delete/{id}', [LiabilitiesController::class, 'entryForceDelete'])->name('liabilities.entry.forcedelete');
 });
 
 require __DIR__.'/auth.php';
+

@@ -196,9 +196,9 @@ const forceDeleteUser = (id) => {
 
     <AuthenticatedLayout>
         <!-- Card container styled like AdminLTE card-primary card-outline -->
-        <div class="border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Card Header -->
-            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[#f8f9fa] dark:bg-[#242434]">
+            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h2 class="text-xl font-bold text-slate-850 dark:text-white m-0 leading-tight">
                     {{ t('pages.User List') }}
                 </h2>
@@ -291,9 +291,9 @@ const forceDeleteUser = (id) => {
         <!-- Trashed Users section styled like AdminLTE outline card -->
         <div
             v-if="props.trashUsers.length > 0"
-            class="border-t-[3px] border-t-red-600 border-x border-b border-rose-100 dark:border-rose-950 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden"
+            class="border border-rose-100 dark:border-rose-950 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden"
         >
-            <div class="px-5 py-3 bg-rose-50/20 dark:bg-rose-950/5 border-b border-rose-100 dark:border-rose-950">
+            <div class="px-5 py-3 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50 border-b border-rose-100 dark:border-rose-950">
                 <h3 class="text-lg font-bold text-rose-800 dark:text-rose-400 m-0">
                     {{ t('pages.Deleted User List') }}
                 </h3>

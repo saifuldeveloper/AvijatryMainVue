@@ -204,7 +204,7 @@ const submitForm = () => {
                     </div>
 
                     <!-- Footer Action -->
-                    <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-250/60 dark:border-slate-700/60">
+                    <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200/60 dark:border-slate-700/60">
                         <button
                             type="submit"
                             :disabled="form.processing"
