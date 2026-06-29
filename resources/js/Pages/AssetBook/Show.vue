@@ -650,7 +650,7 @@ const submitEntryForm = () => {
         </div>
 
         <!-- Asset Entry Modal -->
-        <div v-if="isEntryModalOpen" class="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none">
+        <div v-if="isEntryModalOpen" class="fixed inset-0 z-50 flex items-start justify-center pt-8 overflow-x-hidden overflow-y-auto outline-none bg-slate-900/60 backdrop-blur-sm">
             <div class="fixed inset-0 bg-black/50 transition-opacity" @click="closeEntryModal"></div>
             <div class="relative w-full max-w-2xl mx-auto z-50 p-4">
                 <div class="relative flex flex-col w-full bg-white dark:bg-slate-800 border-0 rounded-lg shadow-lg outline-none">

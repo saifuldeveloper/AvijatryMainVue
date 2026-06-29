@@ -17,16 +17,28 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        \Schema::disableForeignKeyConstraints();
 
         $this->call([
+            UsersTableSeeder::class,
+            CategoriesTableSeeder::class,
+            ColorsTableSeeder::class,
+            SizesTableSeeder::class,
             NotesTableSeeder::class,
             AssetBooksTableSeeder::class,
             AssetsTableSeeder::class,
+            FactoriesTableSeeder::class,
+            BankAccountsTableSeeder::class,
+            
+            GiftPurchasesTableSeeder::class,
+            GiftSupplierAccountEntriesTableSeeder::class,
+            GiftSuppliersTableSeeder::class,
+            GiftTransactionsTableSeeder::class,
+            GiftTypesTableSeeder::class,
+            GiftsTableSeeder::class,
         ]);
+
+        \Schema::enableForeignKeyConstraints();
     }
 }
 

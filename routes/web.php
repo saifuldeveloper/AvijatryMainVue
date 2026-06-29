@@ -13,6 +13,12 @@ use App\Http\Controllers\AssetBookController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\LiabilitiesController;
 use App\Http\Controllers\ZakatController;
+use App\Http\Controllers\FactoryController;
+use App\Http\Controllers\AccountBookController;
+use App\Http\Controllers\GiftController;
+use App\Http\Controllers\GiftSupplierController;
+use App\Http\Controllers\GiftPurchaseController;
+use App\Http\Controllers\BankAccountController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -130,7 +136,56 @@ Route::middleware('auth')->group(function () {
     Route::delete('liabilities/entry/destory/{id}', [LiabilitiesController::class, 'entryDestroy'])->name('liabilities.entry.destroy');
     Route::post('liabilities/entry/restore/{id}', [LiabilitiesController::class, 'entryRestore'])->name('liabilities.entry.restore');
     Route::delete('liabilities/entry/force-delete/{id}', [LiabilitiesController::class, 'entryForceDelete'])->name('liabilities.entry.forcedelete');
+
+    // Factory/Supplier Routes
+    Route::get('get-factories', [FactoryController::class, 'getFactories'])->name('get-factories');
+    Route::resource('factory', FactoryController::class);
+    Route::post('factory/{id}/restore', [FactoryController::class, 'restore'])->name('factory.restore');
+    Route::delete('factory/{id}/force-delete', [FactoryController::class, 'forceDelete'])->name('factory.forceDelete');
+    Route::post('factory/{factory}/closing', [FactoryController::class, 'closing'])->name('factory.closing');
+
+    // Factory Account Book / Ledger Routes
+    Route::get('account-book/{accountBook}', [AccountBookController::class, 'show'])->name('account-book.show');
+    Route::get('account-book/{accountBook}/closing', [AccountBookController::class, 'closingPage'])->name('account-book.closing');
+    Route::post('account-book/{accountBook}/closing-store', [AccountBookController::class, 'closing'])->name('account-book.closing-store');
+
+    // Factory Entry Routes
+    Route::post('factory/entry/store', [AccountBookController::class, 'entryStore'])->name('factory.entry.store');
+    Route::put('factory/entry/update/{id}', [AccountBookController::class, 'entryUpdate'])->name('factory.entry.update');
+    Route::delete('factory/entry/destroy/{id}', [AccountBookController::class, 'entryDestroy'])->name('factory.entry.destroy');
+    Route::post('factory/entry/restore/{id}', [AccountBookController::class, 'entryRestore'])->name('factory.entry.restore');
+    Route::delete('factory/entry/force-delete/{id}', [AccountBookController::class, 'entryForceDelete'])->name('factory.entry.forcedelete');
+
+    // Gift Routes
+    Route::resource('gift', GiftController::class)->except(['show']);
+    Route::get('gift-transaction/{id}', [GiftController::class, 'transactionShow'])->name('gift.transaction');
+    Route::delete('gift/{gift}/force-delete', [GiftController::class, 'forceDelete'])->name('gift.forceDelete');
+    Route::post('gift/{gift}/restore', [GiftController::class, 'restore'])->name('gift.restore');
+
+    // Gift Supplier Routes
+    Route::get('/get-gift-suppliers-list', [GiftSupplierController::class, 'getGiftSupplierslist'])->name('get-gift-suppliers-list');
+    Route::get('/get-gift-suppliers', [GiftSupplierController::class, 'getGiftSuppliers'])->name('get-gift-suppliers');
+    Route::resource('gift-supplier', GiftSupplierController::class);
+    Route::delete('gift-supplier/{gift_supplier}/force-delete', [GiftSupplierController::class, 'forceDelete'])->name('gift-supplier.forceDelete');
+    Route::post('gift-supplier/{gift_supplier}/restore', [GiftSupplierController::class, 'restore'])->name('gift-supplier.restore');
+    Route::get('gift-supplier/entry/date/currection/{id}', [GiftSupplierController::class, 'entryDateCurrection'])->name('gift-supplier.entry.date.currection');
+    Route::get('/gift-suppliers', [GiftSupplierController::class, 'index'])->name('gift-supplier.index');
+    Route::get('gift-supplier/account-book/entry-list/{accountBookId}', [GiftSupplierController::class, 'giftSupplierEntryList'])->name('gift-supplier.account-book.entry.list');
+
+    // Gift Purchase Routes
+    Route::resource('gift-purchase', GiftPurchaseController::class);
+    Route::post('gift-purchases/restore/{id}', [GiftPurchaseController::class, 'restore'])->name('gift_purchases.restore');
+    Route::delete('gift-purchases/force-delete/{id}', [GiftPurchaseController::class, 'forceDelete'])->name('gift_purchases.forceDelete');
+
+    // Bank Account Routes
+    Route::resource('bank-account', BankAccountController::class);
+    Route::delete('bank-account/{bank_account}/force-delete', [BankAccountController::class, 'forceDelete'])->name('bank-account.forceDelete');
+    Route::post('bank-account/{bank_account}/restore', [BankAccountController::class, 'restore'])->name('bank-account.restore');
+    Route::get('bank-account/entry/date/currection/{id}', [BankAccountController::class, 'entryDateCurrection'])->name('bank-account.entry.date.currection');
 });
+
+
+
 
 require __DIR__.'/auth.php';
 

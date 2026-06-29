@@ -21,5 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Vite::prefetch(concurrency: 3);
+
+        \Illuminate\Database\Eloquent\Relations\Relation::morphMap([
+            'gift-supplier' => \App\Models\GiftSupplier::class,
+            'factory' => \App\Models\Factory::class,
+            'bank-account' => \App\Models\BankAccount::class,
+        ]);
     }
 }

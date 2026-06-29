@@ -432,9 +432,9 @@ const forceDeleteSize = (id) => {
         <!-- Add/Edit Size Modal -->
         <div
             v-if="isModalOpen"
-            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-8 p-4 bg-slate-900/60 backdrop-blur-sm"
         >
-            <div class="w-full max-w-md rounded-lg bg-white dark:bg-slate-800 shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-transform scale-100">
+            <div class="w-full max-w-xl rounded-lg bg-white dark:bg-slate-800 shadow-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-transform scale-100">
                 <!-- Modal Header -->
                 <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-slate-50 dark:bg-slate-900/50">
                     <h3 class="text-lg font-bold text-slate-850 dark:text-white">

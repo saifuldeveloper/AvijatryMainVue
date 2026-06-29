@@ -4,6 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\FactoryAccountEntry;
+use App\Enums\FactoryEntryType;
+use App\Models\GiftSupplier;
+use App\Models\GiftPurchase;
+use App\Models\GiftSupplierAccountEntry;
+use App\Models\Transaction;
+use App\Models\Cheque;
 
 class AccountBook extends Model
 {
@@ -28,6 +35,11 @@ class AccountBook extends Model
         'closing_date',
     ];
 
+    public function account()
+    {
+        return $this->morphTo();
+    }
+
     public function assetAccount()
     {
         return $this->belongsTo(AssetBook::class, 'account_id', 'id');
@@ -38,9 +50,57 @@ class AccountBook extends Model
         return $this->belongsTo(Liabilitie::class, 'account_id', 'id');
     }
 
+    public function factoryAccount()
+    {
+        return $this->belongsTo(Factory::class, 'account_id', 'id');
+    }
+
     public function retailAccount()
     {
         return $this->belongsTo(RetailStore::class, 'account_id', 'id');
+    }
+
+    public function giftSupplierAccount()
+    {
+        return $this->belongsTo(GiftSupplier::class, 'account_id', 'id');
+    }
+
+    public function giftPurchases()
+    {
+        if ($this->account_type !== 'gift-supplier') {
+            return null;
+        }
+        return $this->hasMany(GiftPurchase::class);
+    }
+
+    public function transactionsFrom()
+    {
+        return $this->hasMany(Transaction::class, 'from_account_id');
+    }
+
+    public function transactionsTo()
+    {
+        return $this->hasMany(Transaction::class, 'to_account_id');
+    }
+
+    public function closingTransactions()
+    {
+        return $this->hasMany(Transaction::class, 'closing_id');
+    }
+
+    public function cheques()
+    {
+        return $this->hasMany(Cheque::class);
+    }
+
+    public function closingCheques()
+    {
+        return $this->hasMany(Cheque::class, 'closing_id');
+    }
+
+    public function giftSupplierEntries()
+    {
+        return $this->hasMany(GiftSupplierAccountEntry::class, 'account_book_id', 'id');
     }
 
     public function getDescription()
@@ -72,10 +132,161 @@ class AccountBook extends Model
 
     public function getDescriptionBalance()
     {
+        if ($this->account_type === 'factory' || $this->account_type === 'gift-supplier') {
+            if ($this->open) {
+                return $this->getCalculatedBalance();
+            }
+            return (float)$this->closing_balance;
+        }
+
         // Simple fallback since manual closing and complex calculations belong to retail stores
         if ($this->open) {
             return (float)$this->previous_balance; 
         }
         return (float)$this->closing_balance;
     }
+
+    public function getCalculatedBalance()
+    {
+        if ($this->account_type === 'factory') {
+            return $this->calculateFactoryBalance();
+        } elseif ($this->account_type === 'gift-supplier') {
+            return $this->calculateGiftSupplierBalance();
+        }
+        return $this->getOpeningBalance();
+    }
+
+    public function calculateGiftSupplierBalance(): float
+    {
+        return (float)$this->getTotalProductsWorth() - array_sum([
+            $this->getTotalReturnAmount(),
+            $this->getTotalPayment(),
+            (float)$this->commission,
+            (float)$this->staff,
+            (float)$this->staff_shoe_amount,
+            $this->getTotalClosingPayment(),
+        ]);
+    }
+
+    private function calculateFactoryBalance(): float
+    {
+        return (float)$this->getTotalProductsWorth() - array_sum([
+            $this->getTotalReturnAmount(),
+            $this->getTotalPayment(),
+            (float)$this->commission,
+            (float)$this->staff,
+            (float)$this->staff_shoe_amount,
+            $this->getTotalClosingPayment(),
+        ]);
+    }
+
+    public function getTotalProductsWorth()
+    {
+        if ($this->account_type === 'factory') {
+            return FactoryAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', FactoryEntryType::Purchase)
+                ->where('status', 1)
+                ->sum('total_amount');
+        }
+        if ($this->account_type === 'gift-supplier') {
+            return GiftSupplierAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', 0) // Purchase
+                ->sum('total_amount');
+        }
+        return 0;
+    }
+
+    public function getTotalPurchaseProducts()
+    {
+        if ($this->account_type === 'factory') {
+            return FactoryAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', FactoryEntryType::Purchase)
+                ->where('status', 1)
+                ->sum('count');
+        }
+        if ($this->account_type === 'gift-supplier') {
+            return GiftSupplierAccountEntry::where('account_book_id', $this->id)
+                ->sum('count');
+        }
+        return 0;
+    }
+
+    public function getTotalReturnAmount()
+    {
+        if ($this->account_type === 'factory') {
+            return FactoryAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', FactoryEntryType::Return)
+                ->where('status', 1)
+                ->sum('total_amount');
+        }
+        return 0;
+    }
+
+    public function getTotalPayment()
+    {
+        if ($this->account_type === 'factory') {
+            return FactoryAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', FactoryEntryType::Payment)
+                ->whereNull('closing_id')
+                ->where('status', 1)
+                ->sum('total_amount');
+        }
+        if ($this->account_type === 'gift-supplier') {
+            return GiftSupplierAccountEntry::where('account_book_id', $this->id)
+                ->sum('payment_amount');
+        }
+        return 0;
+    }
+
+    public function getTotalClosingTransactionAmount()
+    {
+        if ($this->open) {
+            return 0;
+        }
+        if ($this->account_type === 'factory') {
+            return FactoryAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', FactoryEntryType::Payment)
+                ->where('closing_id', $this->id)
+                ->where('status', 1)
+                ->sum('total_amount');
+        }
+        if ($this->account_type === 'gift-supplier') {
+            return GiftSupplierAccountEntry::where('account_book_id', $this->id)
+                ->where('entry_type', 5) // ClosingPayment
+                ->sum('payment_amount');
+        }
+        return 0;
+    }
+
+    public function getTotalClosingChequeAmount()
+    {
+        if ($this->open || ($this->account_type !== 'factory' && $this->account_type !== 'gift-supplier')) {
+            return 0;
+        }
+        return $this->closingCheques()->sum('amount');
+    }
+
+    public function getTotalClosingPayment()
+    {
+        return $this->getTotalClosingTransactionAmount() + $this->getTotalClosingChequeAmount();
+    }
+
+    public function getPaymentPercentage()
+    {
+        if ($this->account_type === 'factory' || $this->account_type === 'gift-supplier') {
+            $purchase = $this->getTotalProductsWorth();
+            $payment = $this->getTotalPayment();
+            if ($purchase == 0) {
+                return 0;
+            }
+            return ($payment / $purchase) * 100;
+        }
+        return 0;
+    }
+
+    public function getTotalPurchasePrice()
+    {
+        return $this->getTotalProductsWorth();
+    }
 }
+

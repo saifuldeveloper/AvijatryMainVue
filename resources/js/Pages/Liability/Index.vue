@@ -359,9 +359,9 @@ const forceDeleteLiability = (id) => {
         </div>
 
         <!-- Form Modal (Create / Edit Book) -->
-        <div v-if="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none">
+        <div v-if="isModalOpen" class="fixed inset-0 z-50 flex items-start justify-center pt-8 overflow-x-hidden overflow-y-auto outline-none bg-slate-900/60 backdrop-blur-sm">
             <div class="fixed inset-0 bg-black/50 transition-opacity" @click="closeModal"></div>
-            <div class="relative w-full max-w-md mx-auto z-50">
+            <div class="relative w-full max-w-xl mx-auto z-50">
                 <div class="relative flex flex-col w-full bg-white dark:bg-slate-800 border-0 rounded-lg shadow-lg outline-none">
                     <!-- Modal Header -->
                     <div class="flex items-center justify-between p-5 border-b border-solid border-slate-200 dark:border-slate-700 rounded-t">
