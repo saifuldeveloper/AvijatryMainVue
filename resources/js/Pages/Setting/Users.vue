@@ -39,7 +39,7 @@ const t = (key) => {
             'Edit User': 'Edit User',
             'name': 'Name',
             'email': 'Email',
-            'phone': 'pages.phone',
+            'phone': 'Mobile No',
             'User Type': 'User Type',
             'type': 'Type',
             'option': 'Option',
@@ -71,7 +71,7 @@ const t = (key) => {
             'Edit User': 'ব্যবহারকারী সম্পাদন',
             'name': 'নাম',
             'email': 'ইমেইল',
-            'phone': 'ফোন',
+            'phone': 'মোবাইল নম্বর',
             'User Type': 'ব্যবহারকারীর ধরণ',
             'type': 'ধরণ',
             'option': 'অপশন',
@@ -99,12 +99,6 @@ const t = (key) => {
         }
     };
     const locale = page.props.locale || 'en';
-    
-    // In the old project in English, the translator output the literal prefix string "pages.phone" because of a translation mapping bug
-    if (locale === 'en' && cleanKey === 'phone') {
-        return 'pages.phone';
-    }
-    
     return fallbacks[locale]?.[cleanKey] || key;
 };
 
@@ -202,9 +196,9 @@ const forceDeleteUser = (id) => {
 
     <AuthenticatedLayout>
         <!-- Card container styled like AdminLTE card-primary card-outline -->
-        <div class="border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Card Header -->
-            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[#f8f9fa] dark:bg-[#242434]">
+            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h2 class="text-xl font-bold text-slate-850 dark:text-white m-0 leading-tight">
                     {{ t('pages.User List') }}
                 </h2>
@@ -297,9 +291,9 @@ const forceDeleteUser = (id) => {
         <!-- Trashed Users section styled like AdminLTE outline card -->
         <div
             v-if="props.trashUsers.length > 0"
-            class="border-t-[3px] border-t-red-600 border-x border-b border-rose-100 dark:border-rose-950 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden"
+            class="border border-rose-100 dark:border-rose-950 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden"
         >
-            <div class="px-5 py-3 bg-rose-50/20 dark:bg-rose-950/5 border-b border-rose-100 dark:border-rose-950">
+            <div class="px-5 py-3 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50 border-b border-rose-100 dark:border-rose-950">
                 <h3 class="text-lg font-bold text-rose-800 dark:text-rose-400 m-0">
                     {{ t('pages.Deleted User List') }}
                 </h3>
@@ -396,7 +390,7 @@ const forceDeleteUser = (id) => {
                 <form @submit.prevent="submitForm" class="p-5 space-y-4">
                     <!-- Name Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.name') }} <span class="text-rose-500">*</span>
                         </label>
                         <input
@@ -405,14 +399,14 @@ const forceDeleteUser = (id) => {
                             required
                             class="w-full px-3 py-1.5 rounded border border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                         />
-                        <div v-if="form.errors.name" class="text-rose-550 dark:text-rose-450 text-xs font-semibold mt-1">
+                        <div v-if="form.errors.name" class="text-rose-550 dark:text-rose-455 text-xs font-semibold mt-1">
                             {{ form.errors.name }}
                         </div>
                     </div>
 
                     <!-- Email Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.email') }} <span class="text-rose-500">*</span>
                         </label>
                         <input
@@ -428,7 +422,7 @@ const forceDeleteUser = (id) => {
 
                     <!-- Phone Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.phone') }}
                         </label>
                         <input
@@ -443,7 +437,7 @@ const forceDeleteUser = (id) => {
 
                     <!-- Password Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.password') }} <span v-if="!isEditing" class="text-rose-500">*</span>
                         </label>
                         <input
@@ -462,7 +456,7 @@ const forceDeleteUser = (id) => {
 
                     <!-- User Type Dropdown -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.User Type') }} <span class="text-rose-500">*</span>
                         </label>
                         <select
@@ -496,7 +490,7 @@ const forceDeleteUser = (id) => {
                         <button
                             type="submit"
                             :disabled="form.processing"
-                            class="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-650 hover:from-blue-700 hover:to-indigo-750 text-white rounded font-semibold shadow-md shadow-blue-500/10 hover:shadow-lg disabled:opacity-50 transition-all"
+                            class="px-4 py-2 bg-[#007bff] hover:bg-[#0069d9] text-white font-semibold rounded text-sm transition duration-150 shadow-sm disabled:opacity-50"
                         >
                             {{ isEditing ? t('pages.update') : t('pages.save') }}
                         </button>

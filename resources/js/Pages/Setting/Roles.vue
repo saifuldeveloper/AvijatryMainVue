@@ -245,9 +245,9 @@ const deleteRole = (id) => {
 
     <AuthenticatedLayout>
         <!-- Card container styled like AdminLTE card-primary card-outline -->
-        <div class="border-t-[3px] border-t-blue-600 border-x border-b border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <!-- Card Header -->
-            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[#f8f9fa] dark:bg-[#242434]">
+            <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
                 <h2 class="text-xl font-bold text-slate-850 dark:text-white m-0 leading-tight">
                     {{ t('pages.User type list') }}
                 </h2>
@@ -353,7 +353,7 @@ const deleteRole = (id) => {
                 <form @submit.prevent="submitForm" class="flex-1 overflow-y-auto p-5 space-y-6">
                     <!-- User Type Name Input -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-350 mb-1">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-white mb-1">
                             {{ t('pages.name') }} <span class="text-rose-500">*</span>
                         </label>
                         <input
@@ -378,7 +378,7 @@ const deleteRole = (id) => {
                             <button
                                 type="button"
                                 @click="toggleAll"
-                                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-650 text-slate-700 dark:text-slate-250 border border-slate-350 dark:border-slate-600 rounded shadow-sm transition-colors"
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-650 text-slate-700 dark:text-slate-200 border border-slate-350 dark:border-slate-600 rounded shadow-sm transition-colors"
                             >
                                 <span>⚡</span>
                                 <span>{{ isAllSelected ? t('Deselect All') : t('Select All') }}</span>
@@ -440,7 +440,7 @@ const deleteRole = (id) => {
                         <button
                             type="submit"
                             :disabled="form.processing"
-                            class="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-650 hover:from-blue-700 hover:to-indigo-750 text-white rounded font-semibold shadow-md shadow-blue-500/10 hover:shadow-lg disabled:opacity-50 transition-all"
+                            class="px-4 py-2 bg-[#007bff] hover:bg-[#0069d9] text-white font-semibold rounded text-sm transition duration-150 shadow-sm disabled:opacity-50"
                         >
                             {{ isEditing ? t('pages.update') : t('pages.save') }}
                         </button>
