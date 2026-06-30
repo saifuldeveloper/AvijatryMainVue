@@ -18,7 +18,7 @@ class RetailStoreShoesTableSeeder extends Seeder
 
         \DB::table('retail_store_shoes')->delete();
         
-        \DB::table('retail_store_shoes')->insert(array (
+        \DB::table('retail_store_shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

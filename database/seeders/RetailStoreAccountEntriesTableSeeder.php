@@ -18,7 +18,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
 
         \DB::table('retail_store_account_entries')->delete();
         
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -16020,7 +16020,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-02 21:31:19',
             ),
         ));
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 506,
@@ -32022,7 +32022,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-25 11:37:29',
             ),
         ));
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1027,
@@ -48024,7 +48024,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-04 22:12:14',
             ),
         ));
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1536,
@@ -64026,7 +64026,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-06 22:47:37',
             ),
         ));
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2047,
@@ -80028,7 +80028,7 @@ class RetailStoreAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-25 22:35:42',
             ),
         ));
-        \DB::table('retail_store_account_entries')->insert(array (
+        \DB::table('retail_store_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2551,

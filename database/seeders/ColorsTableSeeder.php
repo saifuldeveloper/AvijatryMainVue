@@ -19,7 +19,7 @@ class ColorsTableSeeder extends Seeder
 
         \DB::table('colors')->delete();
         
-        \DB::table('colors')->insert(array (
+        \DB::table('colors')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

@@ -18,7 +18,7 @@ class InventoryCheckDetailsTableSeeder extends Seeder
 
         \DB::table('inventory_check_details')->delete();
         
-        \DB::table('inventory_check_details')->insert(array (
+        \DB::table('inventory_check_details')->insertOrIgnore(array (
             0 => 
             array (
                 'serial_no' => 1,
@@ -8520,7 +8520,7 @@ class InventoryCheckDetailsTableSeeder extends Seeder
                 'updated_at' => '2026-03-30 12:23:59',
             ),
         ));
-        \DB::table('inventory_check_details')->insert(array (
+        \DB::table('inventory_check_details')->insertOrIgnore(array (
             0 => 
             array (
                 'serial_no' => 635,
@@ -17022,7 +17022,7 @@ class InventoryCheckDetailsTableSeeder extends Seeder
                 'updated_at' => '2026-03-31 12:01:53',
             ),
         ));
-        \DB::table('inventory_check_details')->insert(array (
+        \DB::table('inventory_check_details')->insertOrIgnore(array (
             0 => 
             array (
                 'serial_no' => 1278,
@@ -25524,7 +25524,7 @@ class InventoryCheckDetailsTableSeeder extends Seeder
                 'updated_at' => '2026-03-31 18:28:07',
             ),
         ));
-        \DB::table('inventory_check_details')->insert(array (
+        \DB::table('inventory_check_details')->insertOrIgnore(array (
             0 => 
             array (
                 'serial_no' => 1858,
@@ -34026,7 +34026,7 @@ class InventoryCheckDetailsTableSeeder extends Seeder
                 'updated_at' => '2026-04-01 16:06:43',
             ),
         ));
-        \DB::table('inventory_check_details')->insert(array (
+        \DB::table('inventory_check_details')->insertOrIgnore(array (
             0 => 
             array (
                 'serial_no' => 2453,

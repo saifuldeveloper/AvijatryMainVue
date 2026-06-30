@@ -18,7 +18,7 @@ class SalaryHistoriesTableSeeder extends Seeder
 
         \DB::table('salary_histories')->delete();
         
-        \DB::table('salary_histories')->insert(array (
+        \DB::table('salary_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

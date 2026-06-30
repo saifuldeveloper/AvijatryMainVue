@@ -18,7 +18,7 @@ class ShoesTableSeeder extends Seeder
 
         \DB::table('shoes')->delete();
         
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '100',
@@ -8020,7 +8020,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 20:06:32',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '11d6',
@@ -16022,7 +16022,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 19:26:38',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '13ad',
@@ -24024,7 +24024,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 15:07:59',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1583',
@@ -32026,7 +32026,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-20 19:35:00',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '175a',
@@ -40028,7 +40028,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-05-04 18:27:09',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1930',
@@ -48030,7 +48030,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 12:04:47',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1b07',
@@ -56032,7 +56032,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-21 16:07:31',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1cde',
@@ -64034,7 +64034,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-19 18:52:44',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1eb4',
@@ -72036,7 +72036,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-20 17:27:14',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '208b',
@@ -80038,7 +80038,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-20 20:16:43',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2261',
@@ -88040,7 +88040,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-19 17:07:11',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2438',
@@ -96042,7 +96042,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-19 10:45:40',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '260f',
@@ -104044,7 +104044,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-18 11:12:14',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '27e5',
@@ -112046,7 +112046,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-08-25 10:38:33',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '29c',
@@ -120048,7 +120048,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-09-02 10:21:24',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2b96',
@@ -128050,7 +128050,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-09-10 10:31:10',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2d6d',
@@ -136052,7 +136052,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-09-20 16:56:06',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2f43',
@@ -144054,7 +144054,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-25 14:48:05',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '311b',
@@ -152056,7 +152056,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-15 15:06:59',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '32f1',
@@ -160058,7 +160058,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-12 20:02:53',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '34c8',
@@ -168060,7 +168060,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-11 16:27:55',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '369f',
@@ -176062,7 +176062,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-11 15:55:15',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3875',
@@ -184064,7 +184064,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-08 12:09:54',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3a51',
@@ -192066,7 +192066,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-06 12:42:26',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3c2c',
@@ -200068,7 +200068,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-18 11:51:25',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3e02',
@@ -208070,7 +208070,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-18 16:04:16',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3fd9',
@@ -216072,7 +216072,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-11-23 21:08:19',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '41b',
@@ -224074,7 +224074,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-01-22 16:35:51',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4386',
@@ -232076,7 +232076,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-11 19:39:15',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '455f',
@@ -240078,7 +240078,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-12 16:51:07',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4735',
@@ -248080,7 +248080,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-01-18 12:38:02',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '490c',
@@ -256082,7 +256082,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-04 19:32:24',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4ae2',
@@ -264084,7 +264084,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-06 16:32:48',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4cc8',
@@ -272086,7 +272086,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-14 13:54:46',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4e9f',
@@ -280088,7 +280088,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-20 13:53:27',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '507a',
@@ -288090,7 +288090,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-04-19 23:11:14',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5250',
@@ -296092,7 +296092,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-27 16:37:02',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5427',
@@ -304094,7 +304094,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 17:20:53',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5601',
@@ -312096,7 +312096,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-04-21 00:21:37',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '57e0',
@@ -320098,7 +320098,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-03-09 21:10:46',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '59b7',
@@ -328100,7 +328100,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-22 15:54:26',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5b8e',
@@ -336102,7 +336102,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-23 21:58:53',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5d64',
@@ -344104,7 +344104,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-26 20:40:48',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5f3b',
@@ -352106,7 +352106,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-29 16:17:03',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '6111',
@@ -360108,7 +360108,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-05-02 21:11:14',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '62e8',
@@ -368110,7 +368110,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-05-04 23:06:14',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '64bf',
@@ -376112,7 +376112,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-05-07 15:07:13',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '6695',
@@ -384114,7 +384114,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-05-05 18:56:29',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '7f2',
@@ -392116,7 +392116,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-05-06 21:28:41',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '9ea',
@@ -400118,7 +400118,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-05-11 15:12:47',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'be6',
@@ -408120,7 +408120,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-12 12:21:15',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'dde',
@@ -416122,7 +416122,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-04-22 18:12:44',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'fdf',
@@ -424124,7 +424124,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-09-23 19:28:36',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'X-2d6',
@@ -432126,7 +432126,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2025-12-10 16:30:20',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'X-4ce',
@@ -440128,7 +440128,7 @@ class ShoesTableSeeder extends Seeder
                 'updated_at' => '2026-05-04 12:49:47',
             ),
         ));
-        \DB::table('shoes')->insert(array (
+        \DB::table('shoes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'X-6d3',

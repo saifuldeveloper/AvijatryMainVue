@@ -123,21 +123,51 @@ class AccountBookService
             $entryQuery = GiftSupplierAccountEntry::where('account_book_id', $accountBook->id);
             $trashQuery = GiftSupplierAccountEntry::onlyTrashed()->where('account_book_id', $accountBook->id);
 
-            if ($request->filled('start_date') && $request->filled('end_date')) {
-                $start = Carbon::parse($request->input('start_date'))->startOfDay();
-                $end = Carbon::parse($request->input('end_date'))->endOfDay();
-                $entryQuery->whereBetween('created_at', [$start, $end]);
-                $trashQuery->whereBetween('created_at', [$start, $end]);
+            // Date Range (daterange format: MM/DD/YYYY - MM/DD/YYYY or YYYY-MM-DD - YYYY-MM-DD)
+            if ($request->filled('daterange')) {
+                $dates = explode(' - ', $request->daterange);
+                if (count($dates) === 2) {
+                    $start = Carbon::parse($dates[0])->startOfDay();
+                    $end = Carbon::parse($dates[1])->endOfDay();
+                    $entryQuery->whereBetween('created_at', [$start, $end]);
+                    $trashQuery->whereBetween('created_at', [$start, $end]);
+                }
             }
 
-            if ($request->filled('description')) {
-                $desc = $request->input('description');
-                $entryQuery->where('description', 'like', '%' . $desc . '%');
-                $trashQuery->where('description', 'like', '%' . $desc . '%');
+            // Entry Type
+            if ($request->filled('type')) {
+                $entryQuery->where('entry_type', $request->type);
+                $trashQuery->where('entry_type', $request->type);
             }
 
-            if ($request->filled('amount')) {
-                $amt = $request->input('amount');
+            // Gift Purchase ID (Memo)
+            if ($request->filled('gift_purchase_id')) {
+                $entryQuery->where('gift_purchase_id', $request->gift_purchase_id);
+                $trashQuery->where('gift_purchase_id', $request->gift_purchase_id);
+            }
+
+            // Gift Name
+            if ($request->filled('gift_name')) {
+                $giftName = $request->gift_name;
+                $entryQuery->where(function ($q2) use ($giftName) {
+                    $q2->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(gift_name, '$[0]')) LIKE ?", ["%{$giftName}%"])
+                        ->orWhereRaw("JSON_UNQUOTE(JSON_EXTRACT(gift_name, '$[1]')) LIKE ?", ["%{$giftName}%"]);
+                });
+                $trashQuery->where(function ($q2) use ($giftName) {
+                    $q2->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(gift_name, '$[0]')) LIKE ?", ["%{$giftName}%"])
+                        ->orWhereRaw("JSON_UNQUOTE(JSON_EXTRACT(gift_name, '$[1]')) LIKE ?", ["%{$giftName}%"]);
+                });
+            }
+
+            // Quantity / Count
+            if ($request->filled('count')) {
+                $entryQuery->where('count', $request->count);
+                $trashQuery->where('count', $request->count);
+            }
+
+            // Total Amount / Payment Amount
+            if ($request->filled('total_amount')) {
+                $amt = $request->total_amount;
                 $entryQuery->where(function($q) use ($amt) {
                     $q->where('total_amount', $amt)->orWhere('payment_amount', $amt);
                 });
@@ -150,7 +180,7 @@ class AccountBookService
             $maxDate = GiftSupplierAccountEntry::where('account_book_id', $accountBook->id)->max('created_at');
             $defaultDateRange = '';
             if ($minDate && $maxDate) {
-                $defaultDateRange = Carbon::parse($minDate)->format('Y-m-d') . ' - ' . Carbon::parse($maxDate)->format('Y-m-d');
+                $defaultDateRange = Carbon::parse($minDate)->format('m/d/Y') . ' - ' . Carbon::parse($maxDate)->format('m/d/Y');
             }
 
             // Calculate running balance
@@ -167,7 +197,7 @@ class AccountBookService
                 $balancesMap[$ent->id] = $running;
             }
 
-            $entries = $entryQuery->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(15)->withQueryString();
+            $entries = $entryQuery->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(200)->withQueryString();
             $entries->getCollection()->transform(function ($item) use ($balancesMap) {
                 $item->running_balance = $balancesMap[$item->id] ?? 0;
                 $item->formatted_created_at = Carbon::parse($item->created_at)->format('d/m/Y');
@@ -204,7 +234,7 @@ class AccountBookService
                 'entries' => $entries,
                 'trashedEntries' => $trashedEntries,
                 'defaultDateRange' => $defaultDateRange,
-                'filters' => $request->only(['start_date', 'end_date', 'description', 'amount']),
+                'filters' => $request->only(['daterange', 'type', 'gift_purchase_id', 'gift_name', 'count', 'total_amount']),
                 'summary' => [
                     'opening_balance' => $openingBalance,
                     'total_purchases' => $totalPurchases,
@@ -371,6 +401,7 @@ class AccountBookService
                 'paymentAmount' => $paymentAmount,
                 'openingBalance' => $openingBalance,
                 'bankAccounts' => $bankAccounts,
+                'isDummy' => $request->input('dummy') == 1,
             ]);
         }
 

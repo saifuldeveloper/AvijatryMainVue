@@ -18,7 +18,7 @@ class GiftSupplierAccountEntriesTableSeeder extends Seeder
 
         \DB::table('gift_supplier_account_entries')->delete();
         
-        \DB::table('gift_supplier_account_entries')->insert(array (
+        \DB::table('gift_supplier_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

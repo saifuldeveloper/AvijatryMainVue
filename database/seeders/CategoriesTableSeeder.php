@@ -20,7 +20,7 @@ class CategoriesTableSeeder extends Seeder
 
         \DB::table('categories')->delete();
         
-        \DB::table('categories')->insert(array (
+        \DB::table('categories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

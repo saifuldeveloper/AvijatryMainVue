@@ -19,7 +19,7 @@ class ModelHasRolesTableSeeder extends Seeder
 
         DB::table('model_has_roles')->delete();
 
-        DB::table('model_has_roles')->insert(array (
+        DB::table('model_has_roles')->insertOrIgnore(array (
             0 =>
             array (
                 'role_id' => 1,

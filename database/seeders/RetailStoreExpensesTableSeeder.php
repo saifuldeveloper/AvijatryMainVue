@@ -18,7 +18,7 @@ class RetailStoreExpensesTableSeeder extends Seeder
 
         \DB::table('retail_store_expenses')->delete();
         
-        \DB::table('retail_store_expenses')->insert(array (
+        \DB::table('retail_store_expenses')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

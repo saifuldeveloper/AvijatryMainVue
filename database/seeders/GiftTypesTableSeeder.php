@@ -18,7 +18,7 @@ class GiftTypesTableSeeder extends Seeder
 
         \DB::table('gift_types')->delete();
         
-        \DB::table('gift_types')->insert(array (
+        \DB::table('gift_types')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

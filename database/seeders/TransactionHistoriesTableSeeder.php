@@ -18,7 +18,7 @@ class TransactionHistoriesTableSeeder extends Seeder
 
         \DB::table('transaction_histories')->delete();
         
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3,
@@ -10020,7 +10020,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-06 12:56:55',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 572,
@@ -20022,7 +20022,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-31 11:32:36',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1093,
@@ -30024,7 +30024,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-06 12:07:28',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1594,
@@ -40026,7 +40026,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-10 12:25:19',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2097,
@@ -50028,7 +50028,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-21 10:44:17',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2599,
@@ -60030,7 +60030,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-20 12:19:39',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3099,
@@ -70032,7 +70032,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-12 13:46:46',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3605,
@@ -80034,7 +80034,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-17 19:55:29',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4114,
@@ -90036,7 +90036,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2025-12-15 15:26:47',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4623,
@@ -100038,7 +100038,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-18 12:42:44',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5123,
@@ -110040,7 +110040,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-02 20:05:28',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5623,
@@ -120042,7 +120042,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-17 11:23:16',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6123,
@@ -130044,7 +130044,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 12:07:07',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6628,
@@ -140046,7 +140046,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-09 11:55:21',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7129,
@@ -150048,7 +150048,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-14 12:25:22',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7630,
@@ -160050,7 +160050,7 @@ class TransactionHistoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-26 18:46:30',
             ),
         ));
-        \DB::table('transaction_histories')->insert(array (
+        \DB::table('transaction_histories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8130,

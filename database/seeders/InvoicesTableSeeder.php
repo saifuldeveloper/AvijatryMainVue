@@ -18,7 +18,7 @@ class InvoicesTableSeeder extends Seeder
 
         \DB::table('invoices')->delete();
         
-        \DB::table('invoices')->insert(array (
+        \DB::table('invoices')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -7520,7 +7520,7 @@ class InvoicesTableSeeder extends Seeder
                 'updated_at' => '2025-09-09 21:07:10',
             ),
         ));
-        \DB::table('invoices')->insert(array (
+        \DB::table('invoices')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 502,
@@ -15022,7 +15022,7 @@ class InvoicesTableSeeder extends Seeder
                 'updated_at' => '2026-01-29 14:02:12',
             ),
         ));
-        \DB::table('invoices')->insert(array (
+        \DB::table('invoices')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1012,
@@ -22524,7 +22524,7 @@ class InvoicesTableSeeder extends Seeder
                 'updated_at' => '2026-03-05 22:37:21',
             ),
         ));
-        \DB::table('invoices')->insert(array (
+        \DB::table('invoices')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1535,

@@ -308,12 +308,35 @@ const forceDeleteSupplier = (id) => {
                 </div>
             </div>
 
+            <!-- Length Menu / Shows Entry control -->
+            <div class="px-6 py-4 flex items-center gap-1.5 text-[15px] text-slate-700 dark:text-slate-300">
+                <span>{{ page.props.locale === 'bn' ? 'দেখাচ্ছে' : 'Show' }}</span>
+                <select
+                    v-model="perPage"
+                    class="h-8 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500 py-0.5 px-2"
+                >
+                    <option :value="50">50</option>
+                    <option :value="100">100</option>
+                    <option :value="200">200</option>
+                    <option :value="500">500</option>
+                </select>
+                <span>{{ page.props.locale === 'bn' ? 'এন্ট্রি' : 'entries' }}</span>
+            </div>
+
             <!-- Table -->
-            <div class="overflow-x-auto p-6">
+            <div class="overflow-x-auto p-6 pt-0">
                 <table class="w-full text-left text-[15px] border-collapse">
                     <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
                         <tr>
-                            <th class="px-4 py-2.5 w-[5%] text-center">{{ t('sl') }}</th>
+                            <th class="px-4 py-2.5 text-center w-24 cursor-pointer select-none" @click="toggleSort('id')">
+                                <div class="inline-flex items-center justify-center gap-1">
+                                    <span>{{ t('sl') }}</span>
+                                    <span class="inline-flex flex-col justify-center items-center text-[8px] leading-[6px]">
+                                        <span :class="sortBy === 'id' && sortDirection === 'asc' ? 'text-slate-800 dark:text-slate-100' : 'text-slate-300 dark:text-slate-600'">▲</span>
+                                        <span :class="sortBy === 'id' && sortDirection === 'desc' ? 'text-slate-800 dark:text-slate-100' : 'text-slate-300 dark:text-slate-600'">▼</span>
+                                    </span>
+                                </div>
+                            </th>
                             <th @click="toggleSort('name')" class="px-4 py-2.5 w-[30%] cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800">
                                 {{ t('name') }}
                                 <span v-if="sortBy === 'name'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
@@ -372,12 +395,7 @@ const forceDeleteSupplier = (id) => {
             </div>
 
             <!-- Pagination -->
-            <div class="px-6 py-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-900/30">
-                <div class="text-sm text-slate-600 dark:text-slate-400">
-                    Showing {{ giftSuppliers.from || 0 }} to {{ giftSuppliers.to || 0 }} of {{ giftSuppliers.total || 0 }} entries
-                </div>
-                <Pagination :links="giftSuppliers.links" @page-change="goToPage" />
-            </div>
+            <Pagination :pagination="giftSuppliers" @page-changed="goToPage" />
         </div>
 
         <!-- Trashed Section -->

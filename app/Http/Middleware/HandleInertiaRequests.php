@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
             'appName' => config('app.name'),
             'auth' => [
                 'user' => $request->user(),
+                'permissions' => $request->user() ? $request->user()->getAllPermissions()->pluck('name') : [],
             ],
             'stats' => [
                 'commitments_count' => function () {

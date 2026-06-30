@@ -34,6 +34,16 @@ class GiftSupplierService
     {
         $trashGiftSuppliers = GiftSupplier::onlyTrashed()->get();
 
+        $sortBy = $request->input('sort_by', 'id');
+        $sortDirection = $request->input('sort_direction', 'desc');
+
+        if (!in_array($sortBy, ['id', 'name', 'address', 'mobile_no'])) {
+            $sortBy = 'id';
+        }
+        if (!in_array($sortDirection, ['asc', 'desc'])) {
+            $sortDirection = 'desc';
+        }
+
         $query = GiftSupplier::query();
 
         if ($request->filled('name')) {
@@ -46,12 +56,13 @@ class GiftSupplierService
             $query->where('mobile_no', 'like', '%' . $request->mobile_no . '%');
         }
 
-        $giftSuppliers = $query->latest()->paginate(10)->withQueryString();
+        $perPage = $request->input('per_page', 50);
+        $giftSuppliers = $query->orderBy($sortBy, $sortDirection)->paginate($perPage)->withQueryString();
 
         return Inertia::render('GiftSupplier/Index', [
             'giftSuppliers' => $giftSuppliers,
             'trashGiftSuppliers' => $trashGiftSuppliers,
-            'filters' => $request->only(['name', 'address', 'mobile_no']),
+            'filters' => $request->only(['name', 'address', 'mobile_no', 'per_page', 'sort_by', 'sort_direction']),
         ]);
     }
 

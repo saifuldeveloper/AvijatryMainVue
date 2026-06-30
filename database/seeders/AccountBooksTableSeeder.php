@@ -18,7 +18,7 @@ class AccountBooksTableSeeder extends Seeder
 
         \DB::table('account_books')->delete();
         
-        \DB::table('account_books')->insert(array (
+        \DB::table('account_books')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -11020,7 +11020,7 @@ class AccountBooksTableSeeder extends Seeder
                 'updated_at' => '2025-05-03 19:11:17',
             ),
         ));
-        \DB::table('account_books')->insert(array (
+        \DB::table('account_books')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 505,
@@ -22022,7 +22022,7 @@ class AccountBooksTableSeeder extends Seeder
                 'updated_at' => '2025-05-19 22:15:27',
             ),
         ));
-        \DB::table('account_books')->insert(array (
+        \DB::table('account_books')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1007,
@@ -33024,7 +33024,7 @@ class AccountBooksTableSeeder extends Seeder
                 'updated_at' => '2026-04-22 19:36:05',
             ),
         ));
-        \DB::table('account_books')->insert(array (
+        \DB::table('account_books')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1508,
@@ -44026,7 +44026,7 @@ class AccountBooksTableSeeder extends Seeder
                 'updated_at' => '2026-05-06 18:11:45',
             ),
         ));
-        \DB::table('account_books')->insert(array (
+        \DB::table('account_books')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2008,

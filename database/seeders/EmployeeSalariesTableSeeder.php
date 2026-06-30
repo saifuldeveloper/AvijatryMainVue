@@ -18,7 +18,7 @@ class EmployeeSalariesTableSeeder extends Seeder
 
         \DB::table('employee_salaries')->delete();
         
-        \DB::table('employee_salaries')->insert(array (
+        \DB::table('employee_salaries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

@@ -18,7 +18,7 @@ class ExpensesTableSeeder extends Seeder
 
         \DB::table('expenses')->delete();
         
-        \DB::table('expenses')->insert(array (
+        \DB::table('expenses')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

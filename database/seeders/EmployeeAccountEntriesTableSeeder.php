@@ -18,7 +18,7 @@ class EmployeeAccountEntriesTableSeeder extends Seeder
 
         \DB::table('employee_account_entries')->delete();
         
-        \DB::table('employee_account_entries')->insert(array (
+        \DB::table('employee_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2,
@@ -9020,7 +9020,7 @@ class EmployeeAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-06 11:10:35',
             ),
         ));
-        \DB::table('employee_account_entries')->insert(array (
+        \DB::table('employee_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 518,

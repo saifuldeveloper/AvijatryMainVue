@@ -18,7 +18,7 @@ class ChequesTableSeeder extends Seeder
 
         \DB::table('cheques')->delete();
         
-        \DB::table('cheques')->insert(array (
+        \DB::table('cheques')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -7020,7 +7020,7 @@ class ChequesTableSeeder extends Seeder
                 'updated_at' => '2026-04-29 12:01:52',
             ),
         ));
-        \DB::table('cheques')->insert(array (
+        \DB::table('cheques')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 501,

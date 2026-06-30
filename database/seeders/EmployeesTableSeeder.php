@@ -18,7 +18,7 @@ class EmployeesTableSeeder extends Seeder
 
         \DB::table('employees')->delete();
         
-        \DB::table('employees')->insert(array (
+        \DB::table('employees')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

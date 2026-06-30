@@ -85,12 +85,23 @@ watch([filterType, daterange], () => {
         router.get(route('gift.transaction', props.gift.id), {
             type: filterType.value,
             daterange: daterange.value,
+            page: 1
         }, {
             preserveState: true,
             replace: true
         });
     }, 400);
 });
+
+const goToPage = (pageNumber) => {
+    router.get(route('gift.transaction', props.gift.id), {
+        type: filterType.value,
+        daterange: daterange.value,
+        page: pageNumber
+    }, {
+        preserveState: true
+    });
+};
 </script>
 
 <template>
@@ -98,18 +109,70 @@ watch([filterType, daterange], () => {
 
     <AuthenticatedLayout>
         <div class="mb-4">
-            <a :href="route('gift.index')" class="inline-flex items-center text-[15px] font-semibold text-blue-600 hover:underline gap-1">
+            <Link
+                :href="route('gift.index')"
+                class="inline-flex items-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-slate-200 text-sm font-semibold py-1.5 px-3 rounded transition duration-150"
+            >
                 &larr; {{ t('back') }}
-            </a>
+            </Link>
         </div>
 
-        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
-                <h3 class="text-[20px] font-bold text-slate-800 dark:text-white">
-                    {{ gift.name }} - {{ t('gift_details') }}
-                </h3>
+        <!-- Gift Information Card -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="border border-slate-200 dark:border-slate-700/85 bg-white dark:bg-slate-800 p-6 rounded shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 dark:text-slate-300 uppercase tracking-wider block mb-1">
+                    {{ t('gift_name') }}
+                </span>
+                <span class="text-xl font-bold text-slate-800 dark:text-white">
+                    {{ gift.name }}
+                </span>
+            </div>
+            <!-- Alternating placeholder cards for stats -->
+            <div class="border border-slate-200 dark:border-slate-700/85 bg-white dark:bg-slate-800 p-6 rounded shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 dark:text-slate-300 uppercase tracking-wider block mb-1">
+                    {{ t('pages.purchase') }}
+                </span>
+                <span class="text-xl font-bold text-slate-800 dark:text-white">
+                    {{ gift.purchase_balance || 0 }}
+                </span>
+            </div>
+            <div class="border border-slate-200 dark:border-slate-700/85 bg-white dark:bg-slate-800 p-6 rounded shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 dark:text-slate-300 uppercase tracking-wider block mb-1">
+                    {{ t('pages.sale') }}
+                </span>
+                <span class="text-xl font-bold text-slate-800 dark:text-white">
+                    {{ gift.sale_balance || 0 }}
+                </span>
+            </div>
+            <div class="border border-slate-200 dark:border-slate-700/85 bg-white dark:bg-slate-800 p-6 rounded shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 dark:text-slate-300 uppercase tracking-wider block mb-1">
+                    {{ t('pages.stock') }}
+                </span>
+                <span class="text-xl font-bold text-slate-800 dark:text-white">
+                    {{ gift.stock || 0 }}
+                </span>
+            </div>
+        </div>
 
-                <div class="flex items-center gap-3">
+        <!-- Filter and Transactions Table Section -->
+        <div class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
+            <!-- Filter Bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 border-b border-slate-200 dark:border-slate-700 gap-4 bg-[rgba(0,0,0,0.015)] dark:bg-slate-700/20">
+                <h3 class="text-lg font-bold text-slate-800 dark:text-white">
+                    {{ t('gift_details') }}
+                </h3>
+                
+                <div class="flex flex-flow row wrap gap-3 w-full sm:w-auto">
+                    <!-- Date Range Filter -->
+                    <select
+                        v-model="daterange"
+                        class="h-9 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 font-bold"
+                    >
+                        <option value="">{{ t('pages.all_dates') || 'All Dates' }}</option>
+                        <option v-for="d in dates" :key="d" :value="d">{{ d }}</option>
+                    </select>
+
+                    <!-- Type Filter -->
                     <select
                         v-model="filterType"
                         class="rounded border-slate-300 bg-white px-3 py-1.5 text-[15px] text-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-650 dark:bg-slate-900 dark:text-slate-200"

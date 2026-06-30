@@ -18,7 +18,7 @@ class CommitmentsTableSeeder extends Seeder
 
         \DB::table('commitments')->delete();
         
-        \DB::table('commitments')->insert(array (
+        \DB::table('commitments')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

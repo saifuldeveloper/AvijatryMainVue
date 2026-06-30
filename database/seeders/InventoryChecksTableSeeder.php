@@ -18,7 +18,7 @@ class InventoryChecksTableSeeder extends Seeder
 
         \DB::table('inventory_checks')->delete();
         
-        \DB::table('inventory_checks')->insert(array (
+        \DB::table('inventory_checks')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
