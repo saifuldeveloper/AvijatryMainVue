@@ -98,6 +98,11 @@ class AccountBook extends Model
         return $this->hasMany(Cheque::class, 'closing_id');
     }
 
+    public function ManualClosingdata()
+    {
+        return $this->hasOne(ManualClosing::class, 'account_book_id', 'id');
+    }
+
     public function giftSupplierEntries()
     {
         return $this->hasMany(GiftSupplierAccountEntry::class, 'account_book_id', 'id');

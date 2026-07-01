@@ -21,6 +21,9 @@ use App\Http\Controllers\GiftPurchaseController;
 use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\RetailStoreController;
 use App\Http\Controllers\RetailStoreExpenseController;
+use App\Http\Controllers\ShoeController;
+use App\Http\Controllers\InventoryCheckController;
+use App\Http\Controllers\InventoryCheckEntryController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -196,10 +199,33 @@ Route::middleware('auth')->group(function () {
     Route::delete('bank-account/{bank_account}/force-delete', [BankAccountController::class, 'forceDelete'])->name('bank-account.forceDelete');
     Route::post('bank-account/{bank_account}/restore', [BankAccountController::class, 'restore'])->name('bank-account.restore');
     Route::get('bank-account/entry/date/currection/{id}', [BankAccountController::class, 'entryDateCurrection'])->name('bank-account.entry.date.currection');
+
+    // Shoe Routes
+    Route::resource('shoe', ShoeController::class);
+    Route::get('shoe/show/{shoe}', [ShoeController::class, 'ajaxShow'])->name('ajax.shoe.show');
+    Route::post('shoe/download', [ShoeController::class, 'download'])->name('show.download');
+    Route::post('shoe/download/delete', [ShoeController::class, 'downloadDeleted'])->name('show.download.deleted');
+    Route::get('barcode', [ShoeController::class, 'barcodePage'])->name('shoe.barcode-page');
+    Route::post('barcode', [ShoeController::class, 'barcode'])->name('shoe.barcode');
+    Route::get('shoe/barcode/tr', [ShoeController::class, 'barcodeTr'])->name('tr.barcode');
+
+    // Inventory Check Routes
+    Route::resource('inventory-check', InventoryCheckController::class)->only(['index', 'create', 'store', 'show']);
+    Route::get('inventory-check/{id}/entries-data', [InventoryCheckController::class, 'getEntriesData'])->name('inventory-check.entries-data');
+    Route::get('inventory-check/{id}/remaining-data', [InventoryCheckController::class, 'getRemainingData'])->name('inventory-check.remaining-data');
+    Route::resource('inventory-check-entry', InventoryCheckEntryController::class)->only(['store']);
+    Route::get('inventory-check/{inventoryCheck}/complete', [InventoryCheckController::class, 'complete'])->name('inventory-check.complete');
+    Route::get('inventory-check/{inventoryCheck}/resume', [InventoryCheckController::class, 'resume'])->name('inventory-check.resume');
+    Route::post('inventory-check/{inventoryCheck}/resolve', [InventoryCheckController::class, 'resolve'])->name('inventory-check.resolve');
 });
 
-
-
+Route::get('images/{template}/{filename}', function ($template, $filename) {
+    $path = public_path("images/{$template}/{$filename}");
+    if (file_exists($path)) {
+        return response()->file($path);
+    }
+    return response()->file(public_path('img/shoe.png'));
+})->name('imagecache');
 
 require __DIR__.'/auth.php';
 
