@@ -6,7 +6,7 @@ import { ref, watch } from 'vue';
 
 const props = defineProps({
     bankAccounts: {
-        type: Object,c
+        type: Object,
         required: true,
     },
     trashBankAccounts: {

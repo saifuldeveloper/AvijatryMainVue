@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
             'gift-supplier' => \App\Models\GiftSupplier::class,
             'factory' => \App\Models\Factory::class,
             'bank-account' => \App\Models\BankAccount::class,
+            'retail-store' => \App\Models\RetailStore::class,
+            'employee' => \App\Models\Employee::class,
         ]);
     }
 }
