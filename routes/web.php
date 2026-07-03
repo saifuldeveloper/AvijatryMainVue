@@ -194,6 +194,13 @@ Route::middleware('auth')->group(function () {
     Route::post('gift-purchases/restore/{id}', [GiftPurchaseController::class, 'restore'])->name('gift_purchases.restore');
     Route::delete('gift-purchases/force-delete/{id}', [GiftPurchaseController::class, 'forceDelete'])->name('gift_purchases.forceDelete');
 
+    // Purchase Routes
+    Route::resource('purchase', \App\Http\Controllers\PurchaseController::class);
+    Route::get('purchase/{purchase}/barcode', [\App\Http\Controllers\PurchaseController::class, 'barcode'])->name('purchase.barcode');
+    Route::post('purchase/restore/{id}', [\App\Http\Controllers\PurchaseController::class, 'restore'])->name('purchase.restore');
+    Route::delete('purchase/force-delete/{id}', [\App\Http\Controllers\PurchaseController::class, 'forceDelete'])->name('purchase.forceDelete');
+    Route::get('get/category-sizes', [\App\Http\Controllers\SizeController::class, 'getCategorySizes'])->name('get.category-sizes');
+
     // Bank Account Routes
     Route::resource('bank-account', BankAccountController::class);
     Route::delete('bank-account/{bank_account}/force-delete', [BankAccountController::class, 'forceDelete'])->name('bank-account.forceDelete');

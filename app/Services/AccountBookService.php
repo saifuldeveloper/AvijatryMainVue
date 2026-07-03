@@ -104,7 +104,13 @@ class AccountBookService
                     $balancesMap[$ent->id] = $running;
                 }
 
-                $entries = $entryQuery->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(15)->withQueryString();
+                $entries = $entryQuery->with([
+                    'realPurchase.purchaseEntries.shoe.category',
+                    'realPurchase.purchaseEntries.shoe.color',
+                    'returnToFactoryEntry.shoe.category',
+                    'returnToFactoryEntry.shoe.color'
+                ])->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(15)->withQueryString();
+
                 $transformedItems = $entries->getCollection()->map(function ($item) use ($balancesMap) {
                     $arr = $item->toArray();
                     $arr['running_balance'] = $balancesMap[$item->id] ?? 0;
@@ -117,6 +123,38 @@ class AccountBookService
                         'value' => (int)$val,
                         'name' => $name
                     ];
+
+                    // Compute type (category) and color to match the old project exactly
+                    $computedType = '—';
+                    $computedColor = '—';
+
+                    if ((int)$val === 0) {
+                        // Purchase
+                        if ($item->realPurchase && $item->realPurchase->purchaseEntries) {
+                            $computedType = $item->realPurchase->purchaseEntries->map(function ($pe) {
+                                return $pe->shoe->category->name ?? null;
+                            })->filter()->unique()->implode('<br>');
+
+                            $computedColor = $item->realPurchase->purchaseEntries->map(function ($pe) {
+                                return $pe->shoe->color->name ?? null;
+                            })->filter()->unique()->implode('<br>');
+                        }
+                    } elseif ((int)$val === 1) {
+                        // Return
+                        $shoe = $item->returnToFactoryEntry->shoe ?? null;
+                        $computedType = $shoe->category->name ?? '—';
+                        $computedColor = $shoe->color->name ?? '—';
+                    } elseif ((int)$val === 2) {
+                        // Payment
+                        $computedType = $item->account_name;
+                        if (!empty($item->description)) {
+                            $computedType .= ' (' . $item->description . ')';
+                        }
+                    }
+
+                    $arr['computed_type'] = $computedType ?: '—';
+                    $arr['computed_color'] = $computedColor ?: '—';
+
                     return $arr;
                 });
                 $entries->setCollection($transformedItems);

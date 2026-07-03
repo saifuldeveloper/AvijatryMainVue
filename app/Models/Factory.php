@@ -12,6 +12,11 @@ class Factory extends Model
 
     protected $fillable = ['name', 'address', 'mobile_no', 'mobile_no_two', 'deleted_by'];
 
+    public function shoes()
+    {
+        return $this->hasMany(Shoe::class);
+    }
+
     public function getCurrentAccountBook()
     {
         return $this->accountBooks()->where('open', true)->latest()->first();

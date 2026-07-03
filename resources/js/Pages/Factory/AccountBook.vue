@@ -113,11 +113,11 @@ const t = (key) => {
         bn: {
             'supplier_book': 'মহাজন খাতা',
             'date': 'তারিখ',
-            'details': 'বিবরণ / খাত',
+            'details': 'বিবরণ',
             'pair': 'জোড়া (সংখ্যা)',
-            'purchase_price': 'মহাজন দর (ডজন)',
-            'total_price': 'মোট বিল',
-            'payment': 'পরিশোধ',
+            'purchase_price': 'ভজন দাম',
+            'total_price': 'মোট দাম',
+            'payment': 'তাগাদা',
             'running_balance': ' জের (Running Balance)',
             'clear': 'ফিল্টার পরিষ্কার',
             'filter': 'ফিল্টার',
@@ -592,59 +592,51 @@ const submitEntryForm = () => {
 
             <!-- Ledger Table -->
             <div class="overflow-x-auto p-6 pt-0">
-                <table class="w-full text-left text-[15px] border-collapse text-center">
-                    <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
+                <table class="w-full text-[15px] border-collapse border border-slate-200 dark:border-slate-700">
+                    <thead class="bg-[#f8f9fa] dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700">
                         <tr>
-                            <th class="px-3 py-2.5 w-12">#</th>
-                            <th class="px-3 py-2.5 text-left w-28">{{ t('date') }}</th>
-                            <th class="px-3 py-2.5 w-20">{{ t('memo') }}</th>
-                            <th class="px-3 py-2.5 text-left w-24">{{ t('details') }}</th>
-                            <th class="px-3 py-2.5 text-left">{{ t('type') }}</th>
-                            <th class="px-3 py-2.5 text-left">{{ t('color') }}</th>
-                            <th class="px-3 py-2.5 w-16">{{ t('pair') }}</th>
-                            <th class="px-3 py-2.5 w-24">{{ t('selling_price') }}</th>
-                            <th class="px-3 py-2.5 w-24">{{ t('purchase_price') }}</th>
-                            <th class="px-3 py-2.5 w-24">{{ t('total_price') }}</th>
-                            <th class="px-3 py-2.5 w-24">{{ t('payment') }}</th>
-                            <th class="px-3 py-2.5 w-28">{{ t('balance') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 5%">#</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 13%">{{ t('date') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 6%">{{ t('memo') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 7%">{{ t('details') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('type') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 7%">{{ t('color') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 7%">{{ t('pair') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('selling_price') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('purchase_price') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('total_price') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('payment') }}</th>
+                            <th class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" style="width: 10%">{{ t('balance') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Closed Extra Rows (Prepended on Page 1) -->
                         <template v-if="entries.current_page === 1 && !accountBook.open">
                             <!-- Commission Row -->
-                            <tr v-if="accountBook.commission > 0" class="border-b border-slate-200 dark:border-slate-700/80 bg-slate-100/50 dark:bg-slate-900/20 text-slate-800 dark:text-slate-200 italic">
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 text-left">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 text-left">
-                                    <span class="text-indigo-600 bg-indigo-100 dark:bg-indigo-900/40 px-1.5 py-0.5 rounded text-xs">{{ t('closing') }}</span>
+                            <tr v-if="accountBook.commission > 0" class="text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900/20 italic">
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">—</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
+                                    {{ t('closing') }}
                                 </td>
-                                <td class="px-3 py-2.5 text-left font-semibold">{{ t('commission') }}</td>
-                                <td class="px-3 py-2.5 text-left">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 font-bold text-green-600">{{ parseFloat(accountBook.commission).toFixed(2) }}</td>
-                                <td class="px-3 py-2.5 font-extrabold text-red-500">{{ parseFloat(summary.description_balance).toFixed(2) }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-left font-semibold" colspan="5">{{ t('commission') }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-bold">{{ parseFloat(accountBook.commission).toFixed(2) }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-extrabold">{{ parseFloat(summary.description_balance).toFixed(2) }}</td>
                             </tr>
                             <!-- Staff Expenses Row -->
-                            <tr v-if="accountBook.staff > 0" class="border-b border-slate-200 dark:border-slate-700/80 bg-slate-100/50 dark:bg-slate-900/20 text-slate-800 dark:text-slate-200 italic">
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 text-left">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 text-left">
-                                    <span class="text-indigo-600 bg-indigo-100 dark:bg-indigo-900/40 px-1.5 py-0.5 rounded text-xs">{{ t('closing') }}</span>
+                            <tr v-if="accountBook.staff > 0" class="text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900/20 italic">
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">—</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
+                                    {{ t('closing') }}
                                 </td>
-                                <td class="px-3 py-2.5 text-left font-semibold">{{ t('staff_expences') }}</td>
-                                <td class="px-3 py-2.5 text-left">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5">—</td>
-                                <td class="px-3 py-2.5 font-bold text-green-600">{{ parseFloat(accountBook.staff).toFixed(2) }}</td>
-                                <td class="px-3 py-2.5 font-extrabold text-red-500">{{ (parseFloat(summary.description_balance) + parseFloat(accountBook.commission)).toFixed(2) }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-left font-semibold" colspan="5">{{ t('staff_expences') }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-bold">{{ parseFloat(accountBook.staff).toFixed(2) }}</td>
+                                <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-extrabold">{{ (parseFloat(summary.description_balance) + parseFloat(accountBook.commission)).toFixed(2) }}</td>
                             </tr>
                         </template>
 
@@ -652,76 +644,73 @@ const submitEntryForm = () => {
                         <tr
                             v-for="(entry, index) in entries.data"
                             :key="entry.id"
-                            class="border-b border-slate-200 dark:border-slate-700/80 odd:bg-white even:bg-slate-50/60 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
+                            class="hover:bg-slate-50 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
                         >
-                            <td class="px-3 py-2.5">
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
                                 {{ (entries.current_page - 1) * entries.per_page + index + 1 }}
                             </td>
-                            <td class="px-3 py-2.5 text-left">
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
                                 {{ entry.formatted_created_at }}
                             </td>
-                            <td class="px-3 py-2.5 font-semibold text-blue-600 dark:text-blue-400">
-                                {{ entry.purchase_id || '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-semibold text-blue-600 dark:text-blue-400">
+                                <Link v-if="entry.purchase_id" :href="route('purchase.show', entry.purchase_id)" class="hover:underline">
+                                    {{ entry.purchase_id }}
+                                </Link>
+                                <span v-else>—</span>
                             </td>
-                            <td class="px-3 py-2.5 text-left">
-                                <span v-if="entry.entry_type.value == 0" class="text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded text-xs">{{ t('purchase') }}</span>
-                                <span v-else-if="entry.entry_type.value == 1" class="text-orange-500 bg-orange-100 dark:bg-orange-900/35 px-1.5 py-0.5 rounded text-xs">{{ t('return') }}</span>
-                                <span v-else class="text-green-600 bg-green-100 dark:bg-green-900/35 px-1.5 py-0.5 rounded text-xs">{{ t('payment') }}</span>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
+                                <span v-if="entry.entry_type.value == 0" class="font-bold">{{ t('purchase') }}</span>
+                                <span v-else-if="entry.entry_type.value == 1" class="font-bold">{{ t('return') }}</span>
+                                <span v-else class="font-bold">{{ t('payment') }}</span>
                             </td>
                             <!-- type / category name -->
-                            <td class="px-3 py-2.5 text-left">
-                                {{ entry.account_name || '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" v-html="entry.computed_type || '—'">
                             </td>
                             <!-- color / description -->
-                            <td class="px-3 py-2.5 text-left">
-                                {{ entry.description || '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" v-html="entry.computed_color || '—'">
                             </td>
                             <!-- count / pair -->
-                            <td class="px-3 py-2.5 font-semibold">
-                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? entry.count : '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-semibold">
+                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? entry.count : '' }}
                             </td>
                             <!-- selling price (গায়ের দাম) -->
-                            <td class="px-3 py-2.5 text-slate-600 dark:text-slate-400">
-                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? parseFloat(entry.retail_price).toFixed(2) : '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center text-slate-800 dark:text-slate-200">
+                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? parseFloat(entry.retail_price).toFixed(2) : '' }}
                             </td>
                             <!-- price per dozen (ডজন দাম) -->
-                            <td class="px-3 py-2.5 text-slate-600 dark:text-slate-400">
-                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? parseFloat(entry.purchase_price).toFixed(2) : '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center text-slate-800 dark:text-slate-200">
+                                {{ (entry.entry_type.value == 0 || entry.entry_type.value == 1) ? parseFloat(entry.purchase_price).toFixed(2) : '' }}
                             </td>
                             <!-- total price (মোট দাম) -->
-                            <td class="px-3 py-2.5 font-bold text-slate-850 dark:text-slate-100">
-                                {{ entry.entry_type.value == 0 ? parseFloat(entry.total_amount).toFixed(2) : '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-bold text-slate-850 dark:text-slate-100">
+                                {{ entry.entry_type.value == 0 ? parseFloat(entry.total_amount).toFixed(2) : '' }}
                             </td>
                             <!-- payment / returns (তাগাদা) -->
-                            <td class="px-3 py-2.5 font-bold text-green-600 dark:text-green-400">
-                                {{ (entry.entry_type.value == 1 || entry.entry_type.value == 2) ? parseFloat(entry.total_amount).toFixed(2) : '—' }}
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-bold text-slate-850 dark:text-slate-100">
+                                {{ (entry.entry_type.value == 1 || entry.entry_type.value == 2) ? parseFloat(entry.total_amount).toFixed(2) : '' }}
                             </td>
                             <!-- running balance -->
-                            <td class="px-3 py-2.5 font-extrabold text-red-500">
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-extrabold text-slate-850 dark:text-slate-100">
                                 {{ parseFloat(entry.running_balance).toFixed(2) }}
                             </td>
                         </tr>
 
                         <!-- Opening Balance Row (Appended on Last Page) -->
-                        <tr v-if="entries.current_page === entries.last_page && summary.opening_balance != 0" class="border-b border-slate-200 dark:border-slate-700/80 bg-slate-100/50 dark:bg-slate-900/20 text-slate-800 dark:text-slate-200 italic font-semibold">
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5 text-left">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5 text-left">
-                                <span class="text-teal-600 bg-teal-100 dark:bg-teal-900/40 px-1.5 py-0.5 rounded text-xs">{{ t('old') }}</span>
+                        <tr v-if="entries.current_page === entries.last_page && summary.opening_balance != 0" class="bg-slate-50 dark:bg-slate-900/20 text-slate-800 dark:text-slate-200 italic font-semibold">
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">—</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">
+                                {{ t('old') }}
                             </td>
-                            <td class="px-3 py-2.5 text-left">—</td>
-                            <td class="px-3 py-2.5 text-left">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5">—</td>
-                            <td class="px-3 py-2.5 font-extrabold text-red-500">{{ parseFloat(summary.opening_balance).toFixed(2) }}</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center" colspan="5">-</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center">-</td>
+                            <td class="px-3 py-2 border border-slate-200 dark:border-slate-700 text-center font-extrabold">{{ parseFloat(summary.opening_balance).toFixed(2) }}</td>
                         </tr>
 
                         <tr v-if="entries.data.length === 0">
-                            <td colspan="12" class="px-6 py-10 text-center text-slate-500 dark:text-slate-400">
+                            <td colspan="12" class="px-6 py-10 text-center border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">
                                 {{ t('No records found.') }}
                             </td>
                         </tr>

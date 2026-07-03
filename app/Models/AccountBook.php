@@ -65,6 +65,26 @@ class AccountBook extends Model
         return $this->belongsTo(GiftSupplier::class, 'account_id', 'id');
     }
 
+    public function BankAccount()
+    {
+        return $this->belongsTo(BankAccount::class, 'account_id', 'id');
+    }
+
+    public function EmployeeAccount()
+    {
+        return $this->belongsTo(Employee::class, 'account_id', 'id');
+    }
+
+    public function LoanAccount()
+    {
+        return $this->belongsTo(Loan::class, 'account_id', 'id');
+    }
+
+    public function ExpenceAccount()
+    {
+        return $this->belongsTo(Expense::class, 'account_id', 'id');
+    }
+
     public function giftPurchases()
     {
         if ($this->account_type !== 'gift-supplier') {

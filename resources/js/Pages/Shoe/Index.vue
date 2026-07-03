@@ -523,7 +523,16 @@ const toFixed = (val) => {
                                 <td>{{ shoe.category_name || '-' }}</td>
                                 <td>{{ shoe.color_name || '-' }}</td>
                                 <td>
-                                    <img v-if="shoe.image" :src="`/images/small-thumbnail/${shoe.image}`" height="50" width="50" class="rounded object-fit-cover shadow-sm mx-auto" style="cursor: pointer;" @click="openEditModal(shoe)" loading="lazy">
+                                    <img v-if="shoe.image" 
+                                         :src="`/images/small-thumbnail/${shoe.image}`" 
+                                         height="50" 
+                                         width="50" 
+                                         class="rounded object-fit-cover shadow-sm mx-auto transition-transform duration-200 hover:scale-105" 
+                                         style="cursor: pointer;" 
+                                         @click="openImageModal(shoe)" 
+                                         @mouseenter="handleMouseEnter($event, shoe)"
+                                         @mouseleave="handleMouseLeave"
+                                         loading="lazy">
                                     <img v-else src="/img/shoe.png" height="50" width="50" class="rounded object-fit-cover shadow-sm mx-auto" loading="lazy">
                                 </td>
                                 <td class="text-success">{{ toFixed(shoe.retail_price) }}</td>
@@ -662,6 +671,41 @@ const toFixed = (val) => {
                 </div>
             </div>
         </div>
+
+        <!-- Image Preview Modal -->
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-x-hidden overflow-y-auto outline-none" v-if="showImageModal" @click="showImageModal = false">
+            <div class="fixed inset-0 bg-black/50 transition-opacity"></div>
+            <div class="relative w-full max-w-3xl mx-auto z-50 p-4" @click.stop>
+                <div class="relative flex flex-col w-full bg-white dark:bg-slate-800 border-0 rounded-lg shadow-lg outline-none">
+                    <div class="flex items-center justify-between p-4 border-b border-solid border-slate-200 dark:border-slate-700 rounded-t">
+                        <h5 class="text-lg font-bold text-slate-850 dark:text-white">
+                            {{ t('pages.picture') }}
+                        </h5>
+                        <button type="button" class="p-1 ml-auto bg-transparent border-0 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 float-right text-3xl leading-none font-semibold outline-none focus:outline-none cursor-pointer" @click="showImageModal = false">×</button>
+                    </div>
+                    <div class="relative p-4 flex-auto text-center bg-slate-50 dark:bg-slate-900 rounded-b-lg">
+                        <img :src="modalImageSrc" alt="Shoe Image" class="max-h-[70vh] max-w-full mx-auto rounded-lg object-contain shadow-md" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Hover Preview Popup -->
+        <Teleport to="body">
+            <div 
+                v-if="showHoverPreview" 
+                :style="{ 
+                    position: 'absolute', 
+                    top: hoverPosition.top, 
+                    left: hoverPosition.left, 
+                    zIndex: 9999,
+                    pointerEvents: 'none'
+                }"
+                class="p-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl"
+            >
+                <img :src="hoverImageSrc" alt="Preview" class="max-w-[400px] max-h-[300px] rounded object-contain" />
+            </div>
+        </Teleport>
     </AuthenticatedLayout>
 </template>
 
