@@ -24,6 +24,7 @@ use App\Http\Controllers\RetailStoreExpenseController;
 use App\Http\Controllers\ShoeController;
 use App\Http\Controllers\InventoryCheckController;
 use App\Http\Controllers\InventoryCheckEntryController;
+use App\Http\Controllers\InvoiceController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -200,6 +201,11 @@ Route::middleware('auth')->group(function () {
     Route::post('purchase/restore/{id}', [\App\Http\Controllers\PurchaseController::class, 'restore'])->name('purchase.restore');
     Route::delete('purchase/force-delete/{id}', [\App\Http\Controllers\PurchaseController::class, 'forceDelete'])->name('purchase.forceDelete');
     Route::get('get/category-sizes', [\App\Http\Controllers\SizeController::class, 'getCategorySizes'])->name('get.category-sizes');
+
+    // Invoice / Sale Routes
+    Route::resource('invoice', InvoiceController::class)->except(['index']);
+    Route::get('invoice/{invoice}/force-delete', [InvoiceController::class, 'forceDelete'])->name('invoice.forceDelete');
+    Route::post('invoice/restore/{id}', [InvoiceController::class, 'restore'])->name('invoice.restore');
 
     // Bank Account Routes
     Route::resource('bank-account', BankAccountController::class);

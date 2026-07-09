@@ -309,7 +309,15 @@ class PurchaseRepository
                 $purchaseEntry->delete();
                 $inventory = Inventory::find($purchaseEntry['shoe_id']);
                 if ($inventory) {
-                    $inventory->delete();
+                    $countElsewhere = PurchaseEntry::where('shoe_id', $purchaseEntry->shoe_id)
+                        ->where('id', '!=', $purchaseEntry->id)
+                        ->sum('count');
+
+                    if ($countElsewhere > 0) {
+                        $inventory->decrement('count', $purchaseEntry->count);
+                    } else {
+                        $inventory->delete();
+                    }
                 }
             }
         }

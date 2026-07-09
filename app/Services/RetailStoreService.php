@@ -77,6 +77,13 @@ class RetailStoreService
         $retailStore = $this->repository->store($data);
         logActivity($retailStore, $retailStore->id, 'retail-store.index', 'Create', __('New RetailStore information saved'));
 
+        if ($retailStore->onetime_buyer) {
+            return back()->with([
+                'success-alert' => __('New RetailStore information saved') ?? 'New retail store added successfully',
+                'retail-store' => $retailStore
+            ]);
+        }
+
         return back()->with('success-alert', __('New RetailStore information saved') ?? 'New retail store added successfully');
     }
 
