@@ -19,7 +19,7 @@ class PermissionsTableSeeder extends Seeder
 
         DB::table('permissions')->delete();
 
-        DB::table('permissions')->insert(array (
+        DB::table('permissions')->insertOrIgnore(array (
             0 =>
             array (
                 'id' => 1,

@@ -18,7 +18,7 @@ class InventoriesTableSeeder extends Seeder
 
         \DB::table('inventories')->delete();
         
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '100',
@@ -7520,7 +7520,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 20:06:32',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '11d6',
@@ -15022,7 +15022,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 19:26:38',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '13ad',
@@ -22524,7 +22524,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 15:07:59',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1583',
@@ -30026,7 +30026,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-20 19:35:00',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '175a',
@@ -37528,7 +37528,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-17 22:11:10',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1930',
@@ -45030,7 +45030,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 21:19:15',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1b07',
@@ -52532,7 +52532,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-01 19:29:59',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1cde',
@@ -60034,7 +60034,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-19 18:52:44',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '1eb4',
@@ -67536,7 +67536,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-15 16:10:41',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '208b',
@@ -75038,7 +75038,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-10 14:00:48',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2261',
@@ -82540,7 +82540,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-30 17:01:12',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2438',
@@ -90042,7 +90042,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-02 20:23:35',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '260f',
@@ -97544,7 +97544,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-14 23:03:55',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '27e5',
@@ -105046,7 +105046,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-28 23:44:26',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '29c',
@@ -112548,7 +112548,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-09 20:06:20',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2b96',
@@ -120050,7 +120050,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-15 18:13:13',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2d6d',
@@ -127552,7 +127552,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-12 19:38:54',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '2f43',
@@ -135054,7 +135054,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-25 14:48:06',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '311b',
@@ -142556,7 +142556,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-07 19:37:41',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '32f1',
@@ -150058,7 +150058,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-29 13:30:07',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '34c8',
@@ -157560,7 +157560,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-11 16:27:55',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '369f',
@@ -165062,7 +165062,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-27 19:06:06',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3875',
@@ -172564,7 +172564,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-03 18:17:44',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3a51',
@@ -180066,7 +180066,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-10 16:21:40',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3c2c',
@@ -187568,7 +187568,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-22 17:16:52',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3e02',
@@ -195070,7 +195070,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-21 00:38:02',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '3fd9',
@@ -202572,7 +202572,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-08 21:58:24',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '41b',
@@ -210074,7 +210074,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-14 13:19:21',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4386',
@@ -217576,7 +217576,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-11 19:39:15',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '455f',
@@ -225078,7 +225078,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-12 16:51:07',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4735',
@@ -232580,7 +232580,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-31 12:26:17',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '490c',
@@ -240082,7 +240082,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-04 19:32:24',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4ae2',
@@ -247584,7 +247584,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-06 16:32:48',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4cc8',
@@ -255086,7 +255086,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-14 13:54:46',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '4e9f',
@@ -262588,7 +262588,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-07 23:46:28',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '507a',
@@ -270090,7 +270090,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-16 19:30:18',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5250',
@@ -277592,7 +277592,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-07 01:50:04',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5427',
@@ -285094,7 +285094,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 17:20:53',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5601',
@@ -292596,7 +292596,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-13 21:45:11',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '57e0',
@@ -300098,7 +300098,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-11 14:30:25',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '59b7',
@@ -307600,7 +307600,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-22 15:54:26',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5b8e',
@@ -315102,7 +315102,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-23 21:58:53',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5d64',
@@ -322604,7 +322604,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-05 23:05:15',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '5f3b',
@@ -330106,7 +330106,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-04 22:27:30',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '6111',
@@ -337608,7 +337608,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-02 21:11:14',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '62e8',
@@ -345110,7 +345110,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-05 17:02:42',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '64bf',
@@ -352612,7 +352612,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-07 15:07:13',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '6695',
@@ -360114,7 +360114,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-24 18:35:24',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '7f2',
@@ -367616,7 +367616,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-24 00:56:53',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => '9ea',
@@ -375118,7 +375118,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-27 21:35:52',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'bde',
@@ -382620,7 +382620,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-17 16:14:00',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'dd2',
@@ -390122,7 +390122,7 @@ class InventoriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-08 13:10:00',
             ),
         ));
-        \DB::table('inventories')->insert(array (
+        \DB::table('inventories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 'fd3',

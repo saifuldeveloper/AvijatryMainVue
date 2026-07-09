@@ -18,7 +18,7 @@ class ClosingPeriodsTableSeeder extends Seeder
 
         \DB::table('closing_periods')->delete();
         
-        \DB::table('closing_periods')->insert(array (
+        \DB::table('closing_periods')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

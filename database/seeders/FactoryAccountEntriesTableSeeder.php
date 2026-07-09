@@ -18,7 +18,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
 
         \DB::table('factory_account_entries')->delete();
         
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -12020,7 +12020,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-04-10 04:41:58',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 501,
@@ -24022,7 +24022,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-06 19:50:10',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1006,
@@ -36024,7 +36024,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-21 14:31:12',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1507,
@@ -48026,7 +48026,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-23 12:00:02',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2031,
@@ -60028,7 +60028,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-08 11:12:37',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2540,
@@ -72030,7 +72030,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-19 10:59:01',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3041,
@@ -84032,7 +84032,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-18 11:11:46',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3541,
@@ -96034,7 +96034,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-03 10:33:47',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4044,
@@ -108036,7 +108036,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-22 16:31:24',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4544,
@@ -120038,7 +120038,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-06 17:45:35',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5045,
@@ -132040,7 +132040,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-14 12:11:18',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5546,
@@ -144042,7 +144042,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-12-03 16:39:54',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6049,
@@ -156044,7 +156044,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-15 19:37:05',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6549,
@@ -168046,7 +168046,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-20 14:10:34',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7050,
@@ -180048,7 +180048,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-07 15:57:59',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7551,
@@ -192050,7 +192050,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-10 12:17:49',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8051,
@@ -204052,7 +204052,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-22 13:46:45',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8553,
@@ -216054,7 +216054,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 13:36:23',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 9054,
@@ -228056,7 +228056,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-06 23:31:23',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 9554,
@@ -240058,7 +240058,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-15 12:54:43',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 10054,
@@ -252060,7 +252060,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-25 13:58:29',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 10555,
@@ -264062,7 +264062,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-29 17:40:58',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 11055,
@@ -276064,7 +276064,7 @@ class FactoryAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-05 11:39:25',
             ),
         ));
-        \DB::table('factory_account_entries')->insert(array (
+        \DB::table('factory_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 11555,

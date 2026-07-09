@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shoes', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
+            $table->string('code')->nullable()->unique();
             $table->bigInteger('factory_id')->default(0)->index();
             $table->bigInteger('category_id')->index();
             $table->bigInteger('color_id')->index();

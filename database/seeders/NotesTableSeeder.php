@@ -16,7 +16,7 @@ class NotesTableSeeder extends Seeder
     {
         DB::table('notes')->delete();
         
-        DB::table('notes')->insert(array (
+        DB::table('notes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

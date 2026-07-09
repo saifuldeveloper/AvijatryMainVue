@@ -32,8 +32,10 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'appName' => config('app.name'),
+            'sizeChartEnabled' => env('SIZE_CHART', '0') == '1',
             'auth' => [
                 'user' => $request->user(),
+                'permissions' => $request->user() ? $request->user()->getAllPermissions()->pluck('name') : [],
             ],
             'stats' => [
                 'commitments_count' => function () {

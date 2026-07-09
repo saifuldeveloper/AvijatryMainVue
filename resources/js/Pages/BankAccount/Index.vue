@@ -256,7 +256,7 @@ const forceDeleteAccount = (id) => {
             <div v-show="!isFilterCollapsed" class="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end">
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-355 mb-1.5">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5">
                             {{ t('bank') }}
                         </label>
                         <input
@@ -266,7 +266,7 @@ const forceDeleteAccount = (id) => {
                         />
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-355 mb-1.5">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5">
                             {{ t('branch') }}
                         </label>
                         <input
@@ -276,7 +276,7 @@ const forceDeleteAccount = (id) => {
                         />
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-355 mb-1.5">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1.5">
                             {{ t('account_no') }}
                         </label>
                         <input
@@ -313,10 +313,10 @@ const forceDeleteAccount = (id) => {
 
             <!-- Table -->
             <div class="overflow-x-auto p-6 pt-0">
-                <table class="w-full text-left text-[15px] border-collapse">
-                    <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
+                <table class="w-full text-center text-[14px] border-collapse border border-slate-300 dark:border-slate-700">
+                    <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
                         <tr>
-                            <th class="px-4 py-2.5 text-center w-24 cursor-pointer select-none" @click="toggleSort('id')">
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-24 cursor-pointer select-none" @click="toggleSort('id')">
                                 <div class="inline-flex items-center justify-center gap-1">
                                     <span>{{ t('sl') }}</span>
                                     <span class="inline-flex flex-col justify-center items-center text-[8px] leading-[6px]">
@@ -325,8 +325,8 @@ const forceDeleteAccount = (id) => {
                                     </span>
                                 </div>
                             </th>
-                            <th class="px-4 py-2.5 cursor-pointer select-none" @click="toggleSort('bank')">
-                                <div class="inline-flex items-center gap-1">
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 cursor-pointer select-none" @click="toggleSort('bank')">
+                                <div class="inline-flex items-center justify-center gap-1">
                                     <span>{{ t('bank') }}</span>
                                     <span class="inline-flex flex-col justify-center items-center text-[8px] leading-[6px]">
                                         <span :class="sortBy === 'bank' && sortDirection === 'asc' ? 'text-slate-800 dark:text-slate-100' : 'text-slate-300 dark:text-slate-600'">▲</span>
@@ -334,8 +334,8 @@ const forceDeleteAccount = (id) => {
                                     </span>
                                 </div>
                             </th>
-                            <th class="px-4 py-2.5 cursor-pointer select-none" @click="toggleSort('branch')">
-                                <div class="inline-flex items-center gap-1">
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 cursor-pointer select-none" @click="toggleSort('branch')">
+                                <div class="inline-flex items-center justify-center gap-1">
                                     <span>{{ t('branch') }}</span>
                                     <span class="inline-flex flex-col justify-center items-center text-[8px] leading-[6px]">
                                         <span :class="sortBy === 'branch' && sortDirection === 'asc' ? 'text-slate-800 dark:text-slate-100' : 'text-slate-300 dark:text-slate-600'">▲</span>
@@ -343,8 +343,8 @@ const forceDeleteAccount = (id) => {
                                     </span>
                                 </div>
                             </th>
-                            <th class="px-4 py-2.5 cursor-pointer select-none" @click="toggleSort('account_no')">
-                                <div class="inline-flex items-center gap-1">
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 cursor-pointer select-none" @click="toggleSort('account_no')">
+                                <div class="inline-flex items-center justify-center gap-1">
                                     <span>{{ t('account_no') }}</span>
                                     <span class="inline-flex flex-col justify-center items-center text-[8px] leading-[6px]">
                                         <span :class="sortBy === 'account_no' && sortDirection === 'asc' ? 'text-slate-800 dark:text-slate-100' : 'text-slate-300 dark:text-slate-600'">▲</span>
@@ -352,19 +352,19 @@ const forceDeleteAccount = (id) => {
                                     </span>
                                 </div>
                             </th>
-                            <th class="px-4 py-2.5 text-center w-28">{{ t('option') }}</th>
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-28">{{ t('option') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr
                             v-for="(account, index) in bankAccounts.data"
                             :key="account.id"
-                            class="border-b border-slate-200 dark:border-slate-700/80 odd:bg-white even:bg-slate-50/60 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
+                            class="border-b border-slate-300 dark:border-slate-700 odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
                         >
-                            <td class="px-4 py-2.5 text-center font-medium">
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">
                                 {{ (bankAccounts.current_page - 1) * bankAccounts.per_page + index + 1 }}
                             </td>
-                            <td class="px-4 py-2.5 font-bold">
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">
                                 <Link
                                     :href="route('bank-account.show', account.id)"
                                     class="text-blue-600 dark:text-blue-400 hover:underline"
@@ -372,11 +372,11 @@ const forceDeleteAccount = (id) => {
                                     {{ account.bank }}
                                 </Link>
                             </td>
-                            <td class="px-4 py-2.5 font-medium">{{ account.branch }}</td>
-                            <td class="px-4 py-2.5 font-medium text-slate-800 dark:text-slate-350">
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">{{ account.branch }}</td>
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium text-slate-800 dark:text-slate-200">
                                 {{ account.account_no }}
                             </td>
-                            <td class="px-4 py-2.5 text-center">
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
                                 <div class="flex items-center justify-center gap-1.5">
                                     <button
                                         @click="openEditModal(account)"
@@ -397,7 +397,7 @@ const forceDeleteAccount = (id) => {
                             </td>
                         </tr>
                         <tr v-if="bankAccounts.data.length === 0">
-                            <td colspan="5" class="px-6 py-10 text-center text-slate-500 dark:text-slate-400">
+                            <td colspan="5" class="px-6 py-10 text-center border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400">
                                 {{ t('No records found.') }}
                             </td>
                         </tr>
@@ -414,30 +414,30 @@ const forceDeleteAccount = (id) => {
         <!-- Trashed accounts panel if any exist -->
         <div v-if="trashBankAccounts.length > 0" class="border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800 rounded shadow-sm overflow-hidden mb-8">
             <div class="border-b border-slate-200 dark:border-slate-700 px-6 py-4 bg-[rgba(0,0,0,0.03)] dark:bg-slate-700/50">
-                <h4 class="text-[17px] font-bold text-slate-855 dark:text-white">
+                <h4 class="text-[17px] font-bold text-slate-800 dark:text-white">
                     {{ t('delete bank book') }}
                 </h4>
             </div>
             <div class="overflow-x-auto p-6 pt-0">
-                <table class="w-full text-left text-[15px] border-collapse text-center">
-                    <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
+                <table class="w-full text-center text-[14px] border-collapse border border-slate-300 dark:border-slate-700">
+                    <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
                         <tr>
-                            <th class="px-4 py-2.5 w-16">{{ t('sl') }}</th>
-                            <th class="px-4 py-2.5 text-left">{{ t('bank') }}</th>
-                            <th class="px-4 py-2.5 text-left">{{ t('account_no') }}</th>
-                            <th class="px-4 py-2.5 w-56">{{ t('option') }}</th>
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-16">{{ t('sl') }}</th>
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700">{{ t('bank') }}</th>
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700">{{ t('account_no') }}</th>
+                            <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-56">{{ t('option') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr
                             v-for="(account, index) in trashBankAccounts"
                             :key="account.id"
-                            class="border-b border-slate-200 dark:border-slate-700/80 odd:bg-white even:bg-slate-50/60 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200 text-center"
+                            class="border-b border-slate-300 dark:border-slate-700 odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200 text-center"
                         >
-                            <td class="px-4 py-2.5 font-medium">{{ index + 1 }}</td>
-                            <td class="px-4 py-2.5 text-left font-medium">{{ account.bank }} ({{ account.branch }})</td>
-                            <td class="px-4 py-2.5 text-left font-medium">{{ account.account_no }}</td>
-                            <td class="px-4 py-2.5">
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">{{ index + 1 }}</td>
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">{{ account.bank }} ({{ account.branch }})</td>
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">{{ account.account_no }}</td>
+                            <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
                                 <div class="flex items-center justify-center gap-2">
                                     <button
                                         @click="restoreAccount(account.id)"
@@ -468,7 +468,7 @@ const forceDeleteAccount = (id) => {
                 <div class="relative flex flex-col w-full bg-white dark:bg-slate-800 border-0 rounded-lg shadow-lg outline-none">
                     <!-- Modal Header -->
                     <div class="flex items-center justify-between p-5 border-b border-solid border-slate-200 dark:border-slate-700 rounded-t">
-                        <h3 class="text-lg font-bold text-slate-855 dark:text-white">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-white">
                             {{ editingAccount ? t('edit bank book') : t('new bank account') }}
                         </h3>
                         <button
@@ -491,7 +491,7 @@ const forceDeleteAccount = (id) => {
                                     v-model="form.bank"
                                     type="text"
                                     required
-                                    class="w-full rounded border-slate-350 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
                                 />
                                 <div v-if="form.errors.bank" class="text-red-500 text-xs mt-1">
                                     {{ form.errors.bank }}
@@ -507,7 +507,7 @@ const forceDeleteAccount = (id) => {
                                     v-model="form.branch"
                                     type="text"
                                     required
-                                    class="w-full rounded border-slate-355 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
                                 />
                                 <div v-if="form.errors.branch" class="text-red-500 text-xs mt-1">
                                     {{ form.errors.branch }}
@@ -523,7 +523,7 @@ const forceDeleteAccount = (id) => {
                                     v-model="form.account_no"
                                     type="text"
                                     required
-                                    class="w-full rounded border-slate-355 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500"
                                 />
                                 <div v-if="form.errors.account_no" class="text-red-500 text-xs mt-1">
                                     {{ form.errors.account_no }}

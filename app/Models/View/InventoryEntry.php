@@ -47,8 +47,43 @@ class InventoryEntry extends Model
 		return imageRoute($this->image, 'preview');
 	}
 
+    public function shoe()
+    {
+        return $this->belongsTo(\App\Models\Shoe::class, 'shoe_id');
+    }
+
+    public function getShoeCodeAttribute()
+    {
+        return $this->shoe->code ?? '';
+    }
+
+    public function getFactoryNameAttribute()
+    {
+        return $this->factory;
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->category;
+    }
+
+    public function getColorNameAttribute()
+    {
+        return $this->color;
+    }
+
+    public function getFactoryIdAttribute()
+    {
+        return $this->shoe->factory_id ?? null;
+    }
+
+    public function getCategoryIdAttribute()
+    {
+        return $this->shoe->category_id ?? null;
+    }
+
     public $incrementing = false;
     protected $primaryKey = 'shoe_id';
     protected $table = 'inventories';
-    protected $appends = ['image_url', 'full_image_url', 'thumbnail_url', 'preview_url'];
+    protected $appends = ['image_url', 'full_image_url', 'thumbnail_url', 'preview_url', 'shoe_code', 'factory_name', 'category_name', 'color_name', 'factory_id', 'category_id'];
 }

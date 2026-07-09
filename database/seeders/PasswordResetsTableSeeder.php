@@ -16,7 +16,11 @@ class PasswordResetsTableSeeder extends Seeder
     {
         
 
-        \DB::table('password_resets')->delete();
+        if (\Schema::hasTable('password_resets')) {
+            \DB::table('password_resets')->delete();
+        } elseif (\Schema::hasTable('password_reset_tokens')) {
+            \DB::table('password_reset_tokens')->delete();
+        }
         
         
         

@@ -166,4 +166,13 @@ class SizeController extends Controller implements HasMiddleware
 
         return Redirect::back()->with('success', __('pages.Size permanently deleted'));
     }
+
+    /**
+     * Get sizes for a specific category.
+     */
+    public function getCategorySizes(Request $request)
+    {
+        $sizes = Size::where('category_id', $request->category_id)->get();
+        return response()->json($sizes);
+    }
 }

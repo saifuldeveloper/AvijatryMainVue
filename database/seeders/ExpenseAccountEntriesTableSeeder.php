@@ -18,7 +18,7 @@ class ExpenseAccountEntriesTableSeeder extends Seeder
 
         \DB::table('expense_account_entries')->delete();
         
-        \DB::table('expense_account_entries')->insert(array (
+        \DB::table('expense_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2,
@@ -8020,7 +8020,7 @@ class ExpenseAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-17 10:47:52',
             ),
         ));
-        \DB::table('expense_account_entries')->insert(array (
+        \DB::table('expense_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 536,
@@ -16022,7 +16022,7 @@ class ExpenseAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-15 10:48:53',
             ),
         ));
-        \DB::table('expense_account_entries')->insert(array (
+        \DB::table('expense_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1044,
@@ -24024,7 +24024,7 @@ class ExpenseAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-26 13:51:27',
             ),
         ));
-        \DB::table('expense_account_entries')->insert(array (
+        \DB::table('expense_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1546,

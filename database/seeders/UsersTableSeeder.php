@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 
         \DB::table('users')->delete();
         
-        \DB::table('users')->insert(array (
+        \DB::table('users')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

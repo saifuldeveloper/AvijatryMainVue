@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class RetailStore extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $appends = ['name'];
     // Relationships
     public function unlistedReturns()
     {
@@ -129,5 +131,4 @@ class RetailStore extends Model
 
 
     protected $fillable = ['shop_name', 'address', 'mobile_no', 'onetime_buyer', 'company_share', 'commission', 'secret_key'];
-    protected $appends = ['name'];
 }

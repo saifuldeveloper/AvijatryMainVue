@@ -18,7 +18,7 @@ class AdjustmentEntriesTableSeeder extends Seeder
 
         \DB::table('adjustment_entries')->delete();
         
-        \DB::table('adjustment_entries')->insert(array (
+        \DB::table('adjustment_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

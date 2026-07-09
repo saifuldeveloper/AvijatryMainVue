@@ -18,7 +18,7 @@ class LoanAccountEntriesTableSeeder extends Seeder
 
         \DB::table('loan_account_entries')->delete();
         
-        \DB::table('loan_account_entries')->insert(array (
+        \DB::table('loan_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

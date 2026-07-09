@@ -46,28 +46,28 @@ class DatabaseSeeder extends Seeder
             ChequeAccountEntriesTableSeeder::class,
 
             // Shoes & Inventory
-            ShoesTableSeeder::class,
-            ShoeToSizesTableSeeder::class,
-            InventoriesTableSeeder::class,
+            // ShoesTableSeeder::class,
+            // ShoeToSizesTableSeeder::class,
+            // InventoriesTableSeeder::class,
 
             // Purchases & Factory
             FactoriesTableSeeder::class,
             FactoryAccountEntriesTableSeeder::class,
-            PurchasesTableSeeder::class,
-            PurchaseEntriesTableSeeder::class,
-            ReturnToFactoriesTableSeeder::class,
-            ReturnToFactoryEntriesTableSeeder::class,
+            // PurchasesTableSeeder::class,
+            // PurchaseEntriesTableSeeder::class,
+            // ReturnToFactoriesTableSeeder::class,
+            // ReturnToFactoryEntriesTableSeeder::class,
 
             // Invoices & Retail Store
-            InvoicesTableSeeder::class,
-            InvoiceEntriesTableSeeder::class,
+            // InvoicesTableSeeder::class,
+            // InvoiceEntriesTableSeeder::class,
             RetailStoresTableSeeder::class,
-            RetailStoreShoesTableSeeder::class,
+            // RetailStoreShoesTableSeeder::class,
             RetailStoreExpensesTableSeeder::class,
             RetailStoreAccountEntriesTableSeeder::class,
-            ReturnFromRetailEntriesTableSeeder::class,
-            ReturnToRetailersTableSeeder::class,
-            WasteEntriesTableSeeder::class,
+            // ReturnFromRetailEntriesTableSeeder::class,
+            // ReturnToRetailersTableSeeder::class,
+            // WasteEntriesTableSeeder::class,
 
             // Commitments
             CommitmentsTableSeeder::class,
@@ -105,10 +105,10 @@ class DatabaseSeeder extends Seeder
             TransactionHistoriesTableSeeder::class,
 
             // Adjustments & Closings
-            AdjustmentEntriesTableSeeder::class,
-            InventoryChecksTableSeeder::class,
-            InventoryCheckEntriesTableSeeder::class,
-            InventoryCheckDetailsTableSeeder::class,
+            // AdjustmentEntriesTableSeeder::class,
+            // InventoryChecksTableSeeder::class,
+            // InventoryCheckEntriesTableSeeder::class,
+            // InventoryCheckDetailsTableSeeder::class,
             ClosingPeriodsTableSeeder::class,
             ManualClosingsTableSeeder::class,
             ZakatsTableSeeder::class,

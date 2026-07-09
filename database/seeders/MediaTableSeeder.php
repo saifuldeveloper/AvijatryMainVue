@@ -18,7 +18,7 @@ class MediaTableSeeder extends Seeder
 
         \DB::table('media')->delete();
         
-        \DB::table('media')->insert(array (
+        \DB::table('media')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

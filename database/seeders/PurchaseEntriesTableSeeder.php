@@ -18,7 +18,7 @@ class PurchaseEntriesTableSeeder extends Seeder
 
         \DB::table('purchase_entries')->delete();
         
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -6520,7 +6520,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-04-08 02:10:27',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 501,
@@ -13022,7 +13022,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-04-10 01:00:41',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1001,
@@ -19524,7 +19524,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-04-13 07:34:55',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1501,
@@ -26026,7 +26026,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-04 17:11:49',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2001,
@@ -32528,7 +32528,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-06 14:03:32',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2505,
@@ -39030,7 +39030,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-07 19:13:31',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3005,
@@ -45532,7 +45532,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-10 22:30:35',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3517,
@@ -52034,7 +52034,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-14 00:48:11',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4030,
@@ -58536,7 +58536,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-16 01:06:30',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4550,
@@ -65038,7 +65038,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-18 22:27:01',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5050,
@@ -71540,7 +71540,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-21 20:19:10',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5550,
@@ -78042,7 +78042,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-24 14:31:15',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6050,
@@ -84544,7 +84544,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-25 23:31:33',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6550,
@@ -91046,7 +91046,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-28 20:52:46',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7050,
@@ -97548,7 +97548,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-30 21:45:02',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7550,
@@ -104050,7 +104050,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-07 16:17:21',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8050,
@@ -110552,7 +110552,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-13 17:25:05',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8550,
@@ -117054,7 +117054,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-21 18:27:02',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 9050,
@@ -123556,7 +123556,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-24 12:14:37',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 9550,
@@ -130058,7 +130058,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-27 18:08:15',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 10050,
@@ -136560,7 +136560,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-03 11:15:56',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 10550,
@@ -143062,7 +143062,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-09 21:56:32',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 11050,
@@ -149564,7 +149564,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-19 19:17:25',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 11550,
@@ -156066,7 +156066,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-27 20:58:57',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 12054,
@@ -162568,7 +162568,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-02 21:40:19',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 12554,
@@ -169070,7 +169070,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-09 21:26:52',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 13054,
@@ -175572,7 +175572,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-16 22:58:48',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 13554,
@@ -182074,7 +182074,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-22 21:02:52',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 14055,
@@ -188576,7 +188576,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-25 20:52:33',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 14555,
@@ -195078,7 +195078,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-11 21:40:31',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 15055,
@@ -201580,7 +201580,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-18 20:31:31',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 15555,
@@ -208082,7 +208082,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-22 22:00:13',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 16055,
@@ -214584,7 +214584,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-27 10:37:02',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 16555,
@@ -221086,7 +221086,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-30 17:35:54',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 17061,
@@ -227588,7 +227588,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-04 21:32:38',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 17566,
@@ -234090,7 +234090,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-09 22:03:43',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 18066,
@@ -240592,7 +240592,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-15 12:57:22',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 18566,
@@ -247094,7 +247094,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-17 20:06:04',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 19072,
@@ -253596,7 +253596,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-23 03:07:46',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 19572,
@@ -260098,7 +260098,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-26 22:06:21',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 20072,
@@ -266600,7 +266600,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-12-02 19:30:12',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 20574,
@@ -273102,7 +273102,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-12-21 17:12:56',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 21076,
@@ -279604,7 +279604,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-08 17:15:42',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 21576,
@@ -286106,7 +286106,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-17 16:34:40',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 22076,
@@ -292608,7 +292608,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-21 20:25:35',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 22576,
@@ -299110,7 +299110,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-25 22:34:09',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 23076,
@@ -305612,7 +305612,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-28 16:19:44',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 23592,
@@ -312114,7 +312114,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-30 19:29:24',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 24092,
@@ -318616,7 +318616,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-02 16:04:36',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 24598,
@@ -325118,7 +325118,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-04 20:32:00',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 25098,
@@ -331620,7 +331620,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-07 19:02:12',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 25598,
@@ -338122,7 +338122,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-10 02:25:03',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 26098,
@@ -344624,7 +344624,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-12 14:08:11',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 26598,
@@ -351126,7 +351126,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-16 21:22:44',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 27098,
@@ -357628,7 +357628,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-19 12:42:59',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 27598,
@@ -364130,7 +364130,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-21 19:50:19',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 28102,
@@ -370632,7 +370632,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-23 21:13:50',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 28602,
@@ -377134,7 +377134,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-25 20:45:39',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 29102,
@@ -383636,7 +383636,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-28 01:49:36',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 29611,
@@ -390138,7 +390138,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-02 19:46:34',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 30111,
@@ -396640,7 +396640,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-04 15:17:39',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 30611,
@@ -403142,7 +403142,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-06 13:47:56',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 31111,
@@ -409644,7 +409644,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-08 13:03:49',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 31611,
@@ -416146,7 +416146,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-11 22:49:25',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 32111,
@@ -422648,7 +422648,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-23 15:50:37',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 32611,
@@ -429150,7 +429150,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-25 15:20:29',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 33111,
@@ -435652,7 +435652,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-27 23:03:51',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 33611,
@@ -442154,7 +442154,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-30 13:43:32',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 34111,
@@ -448656,7 +448656,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-02 22:58:23',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 34611,
@@ -455158,7 +455158,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-04 20:05:25',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 35111,
@@ -461660,7 +461660,7 @@ class PurchaseEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-06 21:44:54',
             ),
         ));
-        \DB::table('purchase_entries')->insert(array (
+        \DB::table('purchase_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 35611,

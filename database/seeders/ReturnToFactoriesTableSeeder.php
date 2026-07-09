@@ -18,7 +18,7 @@ class ReturnToFactoriesTableSeeder extends Seeder
 
         \DB::table('return_to_factories')->delete();
         
-        \DB::table('return_to_factories')->insert(array (
+        \DB::table('return_to_factories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -5020,7 +5020,7 @@ class ReturnToFactoriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-27 14:10:44',
             ),
         ));
-        \DB::table('return_to_factories')->insert(array (
+        \DB::table('return_to_factories')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 502,

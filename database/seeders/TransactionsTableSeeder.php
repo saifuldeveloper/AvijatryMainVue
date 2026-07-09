@@ -18,7 +18,7 @@ class TransactionsTableSeeder extends Seeder
 
         \DB::table('transactions')->delete();
         
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3,
@@ -8520,7 +8520,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-05-20 18:49:38',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 534,
@@ -17022,7 +17022,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-05-06 12:29:12',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1085,
@@ -25524,7 +25524,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-05-20 10:34:39',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1599,
@@ -34026,7 +34026,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-06-02 10:31:42',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2103,
@@ -42528,7 +42528,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-07-24 13:51:52',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2604,
@@ -51030,7 +51030,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-09-04 11:00:52',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3106,
@@ -59532,7 +59532,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-09-07 19:00:47',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3608,
@@ -68034,7 +68034,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-11-01 16:43:00',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4117,
@@ -76536,7 +76536,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-11-24 11:53:16',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4628,
@@ -85038,7 +85038,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-12-22 18:20:01',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5138,
@@ -93540,7 +93540,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-01-21 10:51:13',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5639,
@@ -102042,7 +102042,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-02-02 11:01:13',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6139,
@@ -110544,7 +110544,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-02-16 11:58:21',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6640,
@@ -119046,7 +119046,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-02-25 12:20:59',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7148,
@@ -127548,7 +127548,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-03-08 22:29:28',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7648,
@@ -136050,7 +136050,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2025-07-16 15:33:12',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8149,
@@ -144552,7 +144552,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-03-16 12:08:20',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8651,
@@ -153054,7 +153054,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => '2026-04-06 10:48:49',
             ),
         ));
-        \DB::table('transactions')->insert(array (
+        \DB::table('transactions')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 9151,

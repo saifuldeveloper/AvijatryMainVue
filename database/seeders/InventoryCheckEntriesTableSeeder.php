@@ -18,7 +18,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
 
         \DB::table('inventory_check_entries')->delete();
         
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -4520,7 +4520,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-30 11:26:23',
             ),
         ));
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 501,
@@ -9022,7 +9022,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-30 17:39:13',
             ),
         ));
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1001,
@@ -13524,7 +13524,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-31 13:48:06',
             ),
         ));
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1501,
@@ -18026,7 +18026,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-01 11:15:28',
             ),
         ));
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2001,
@@ -22528,7 +22528,7 @@ class InventoryCheckEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-01 17:49:39',
             ),
         ));
-        \DB::table('inventory_check_entries')->insert(array (
+        \DB::table('inventory_check_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2501,

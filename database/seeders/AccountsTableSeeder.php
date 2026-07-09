@@ -18,7 +18,7 @@ class AccountsTableSeeder extends Seeder
 
         \DB::table('accounts')->delete();
         
-        \DB::table('accounts')->insert(array (
+        \DB::table('accounts')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -4520,7 +4520,7 @@ class AccountsTableSeeder extends Seeder
                 'updated_at' => '2025-05-30 22:11:47',
             ),
         ));
-        \DB::table('accounts')->insert(array (
+        \DB::table('accounts')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 36,

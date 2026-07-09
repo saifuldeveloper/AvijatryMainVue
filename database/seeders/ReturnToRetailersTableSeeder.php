@@ -18,7 +18,7 @@ class ReturnToRetailersTableSeeder extends Seeder
 
         \DB::table('return_to_retailers')->delete();
         
-        \DB::table('return_to_retailers')->insert(array (
+        \DB::table('return_to_retailers')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -8520,7 +8520,7 @@ class ReturnToRetailersTableSeeder extends Seeder
                 'updated_at' => '2026-04-29 13:29:07',
             ),
         ));
-        \DB::table('return_to_retailers')->insert(array (
+        \DB::table('return_to_retailers')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 501,

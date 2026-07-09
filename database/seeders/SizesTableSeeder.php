@@ -18,7 +18,7 @@ class SizesTableSeeder extends Seeder
 
         \DB::table('sizes')->delete();
         
-        \DB::table('sizes')->insert(array (
+        \DB::table('sizes')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

@@ -142,10 +142,12 @@ const t = (key) => {
 };
 
 // Filter states
-const startDate = ref(props.filters?.start_date || '');
-const endDate = ref(props.filters?.end_date || '');
-const filterDescription = ref(props.filters?.description || '');
-const filterAmount = ref(props.filters?.amount || '');
+const daterange = ref(props.filters?.daterange || props.defaultDateRange || '');
+const filterType = ref(props.filters?.type || '');
+const filterGiftPurchaseId = ref(props.filters?.gift_purchase_id || '');
+const filterGiftName = ref(props.filters?.gift_name || '');
+const filterCount = ref(props.filters?.count || '');
+const filterTotalAmount = ref(props.filters?.total_amount || '');
 const isFilterCollapsed = ref(true);
 
 const toggleFilter = () => {
@@ -158,10 +160,12 @@ const runFilters = (debounceTime = 400) => {
     clearTimeout(filterTimeout);
     filterTimeout = setTimeout(() => {
         router.get(route('account-book.show', props.accountBook.id), {
-            start_date: startDate.value,
-            end_date: endDate.value,
-            description: filterDescription.value,
-            amount: filterAmount.value,
+            daterange: daterange.value,
+            type: filterType.value,
+            gift_purchase_id: filterGiftPurchaseId.value,
+            gift_name: filterGiftName.value,
+            count: filterCount.value,
+            total_amount: filterTotalAmount.value,
             page: 1
         }, {
             preserveState: true,
@@ -170,22 +174,17 @@ const runFilters = (debounceTime = 400) => {
     }, debounceTime);
 };
 
-watch(filterDescription, () => runFilters(400));
-watch(filterAmount, () => runFilters(400));
-watch([startDate, endDate], () => {
-    if (startDate.value && endDate.value) {
-        runFilters(0);
-    }
-});
+watch([filterType, filterGiftPurchaseId, filterGiftName, filterCount, filterTotalAmount], () => runFilters(400));
 
 const clearFilter = () => {
-    startDate.value = '';
-    endDate.value = '';
-    filterDescription.value = '';
-    filterAmount.value = '';
+    daterange.value = '';
+    filterType.value = '';
+    filterGiftPurchaseId.value = '';
+    filterGiftName.value = '';
+    filterCount.value = '';
+    filterTotalAmount.value = '';
     
-    if (fpStart) fpStart.clear();
-    if (fpEnd) fpEnd.clear();
+    if (fpDaterange) fpDaterange.clear();
     
     router.get(route('account-book.show', props.accountBook.id), {}, {
         preserveState: false
@@ -194,40 +193,51 @@ const clearFilter = () => {
 
 const goToPage = (pageNumber) => {
     router.get(route('account-book.show', props.accountBook.id), {
-        start_date: startDate.value,
-        end_date: endDate.value,
-        description: filterDescription.value,
-        amount: filterAmount.value,
+        daterange: daterange.value,
+        type: filterType.value,
+        gift_purchase_id: filterGiftPurchaseId.value,
+        gift_name: filterGiftName.value,
+        count: filterCount.value,
+        total_amount: filterTotalAmount.value,
         page: pageNumber
     }, {
         preserveState: true
     });
 };
 
-// Flatpickr Element References
-const startDateRef = ref(null);
-const endDateRef = ref(null);
+// Gift names formatter helper
+const formatGiftNames = (giftNameField) => {
+    if (!giftNameField) return '-';
+    try {
+        if (Array.isArray(giftNameField)) {
+            return giftNameField.join(', ');
+        }
+        const parsed = JSON.parse(giftNameField);
+        if (Array.isArray(parsed)) {
+            return parsed.join(', ');
+        }
+        return parsed;
+    } catch (e) {
+        return giftNameField;
+    }
+};
 
-let fpStart, fpEnd;
+// Flatpickr Element Reference
+const daterangeRef = ref(null);
+let fpDaterange;
 
 onMounted(() => {
-    fpStart = flatpickr(startDateRef.value, {
-        dateFormat: 'Y-m-d',
+    fpDaterange = flatpickr(daterangeRef.value, {
+        mode: 'range',
+        dateFormat: 'm/d/Y',
         altInput: true,
         altFormat: 'd/m/Y',
-        defaultDate: startDate.value,
+        defaultDate: daterange.value,
         onChange: (selectedDates, dateStr) => {
-            startDate.value = dateStr;
-        }
-    });
-
-    fpEnd = flatpickr(endDateRef.value, {
-        dateFormat: 'Y-m-d',
-        altInput: true,
-        altFormat: 'd/m/Y',
-        defaultDate: endDate.value,
-        onChange: (selectedDates, dateStr) => {
-            endDate.value = dateStr;
+            if (selectedDates.length === 2) {
+                daterange.value = dateStr.replace(' to ', ' - ');
+                runFilters(0);
+            }
         }
     });
 });
@@ -265,7 +275,7 @@ onMounted(() => {
                     <h5 class="text-blue-600 dark:text-blue-400 font-bold text-lg mb-4 flex items-center gap-2">
                         <i class="fa fa-user"></i> Profile Info
                     </h5>
-                    <div class="space-y-2 text-[15px] text-slate-700 dark:text-slate-350">
+                    <div class="space-y-2 text-[15px] text-slate-700 dark:text-slate-200">
                         <div>Name: <strong class="text-slate-900 dark:text-white">{{ giftSupplier.name }}</strong></div>
                         <div>Address: <strong class="text-slate-900 dark:text-white">{{ giftSupplier.address || '-' }}</strong></div>
                         <div>Mobile: <strong class="text-slate-900 dark:text-white">{{ giftSupplier.mobile_no || '-' }}</strong></div>
@@ -278,7 +288,7 @@ onMounted(() => {
                     <h5 class="text-green-600 dark:text-green-400 font-bold text-lg mb-4 flex items-center gap-2">
                         <i class="fa fa-calculator"></i> {{ t('calculation') }}
                     </h5>
-                    <div class="space-y-2 text-[15px] text-slate-700 dark:text-slate-350">
+                    <div class="space-y-2 text-[15px] text-slate-700 dark:text-slate-200">
                         <div class="flex justify-between">
                             <span>{{ t('total_pair') }}:</span>
                             <strong class="text-slate-900 dark:text-white">{{ summary.total_pairs }}</strong>
@@ -330,7 +340,7 @@ onMounted(() => {
                     
                     <Link
                         v-if="accountBook.open && $page.props.auth.permissions.includes('factory closing')"
-                        :href="route('account-book.closing-page', accountBook.id)"
+                        :href="route('account-book.closing', accountBook.id)"
                         class="bg-[#28a745] hover:bg-[#218838] text-white px-4 py-2 rounded text-sm font-semibold transition duration-150 shadow-sm cursor-pointer w-full text-center"
                     >
                         <i class="fa fa-check-circle"></i> {{ t('closing') }}
@@ -338,7 +348,7 @@ onMounted(() => {
 
                     <Link
                         v-if="accountBook.open && $page.props.auth.permissions.includes('factory dummy closing')"
-                        :href="route('account-book.closing-page', accountBook.id) + '?dummy=1'"
+                        :href="route('account-book.closing', accountBook.id) + '?dummy=1'"
                         class="border border-[#28a745] hover:bg-green-50 dark:hover:bg-green-950/20 text-[#28a745] px-4 py-2 rounded text-sm font-semibold transition duration-150 shadow-sm cursor-pointer w-full text-center"
                     >
                         <i class="fa fa-file-invoice"></i> {{ t('dummy_closing') }}
@@ -348,45 +358,82 @@ onMounted(() => {
 
             <!-- Collapsible Filters -->
             <div v-show="!isFilterCollapsed" class="p-6 border border-slate-200 dark:border-slate-700 rounded bg-slate-50/50 dark:bg-slate-900/30 mb-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 items-end">
+                    <!-- Date Range -->
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                            {{ t('start_date') }}
+                            {{ t('date') }}
                         </label>
                         <input
-                            ref="startDateRef"
-                            v-model="startDate"
+                            ref="daterangeRef"
                             type="text"
-                            placeholder="Select date"
-                            class="w-full h-10 rounded border-slate-350 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500 text-center"
+                            placeholder="Select date range"
+                            class="w-full h-10 rounded border-slate-350 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
                         />
                     </div>
+                    <!-- Type -->
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                            {{ t('end_date') }}
+                            {{ t('type') }}
                         </label>
-                        <input
-                            ref="endDateRef"
-                            v-model="endDate"
-                            type="text"
-                            placeholder="Select date"
-                            class="w-full h-10 rounded border-slate-350 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500 text-center"
-                        />
+                        <select
+                            v-model="filterType"
+                            class="w-full h-10 rounded border-slate-350 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-850 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
+                        >
+                            <option value="">{{ t('pages.all') || 'All' }}</option>
+                            <option value="0">{{ t('purchase') }}</option>
+                            <option value="2">{{ t('payment') }}</option>
+                        </select>
                     </div>
+                    <!-- Memo (Gift Purchase ID) -->
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                            {{ t('description') }}
+                            {{ t('memo') }}
                         </label>
                         <input
-                            v-model="filterDescription"
+                            v-model="filterGiftPurchaseId"
                             type="text"
-                            class="w-full h-10 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-blue-500 focus:ring-blue-500 text-center"
+                            class="w-full h-10 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
                         />
                     </div>
-                    <div class="flex gap-2">
+                    <!-- Gift Name -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                            {{ t('gift') }}
+                        </label>
+                        <input
+                            v-model="filterGiftName"
+                            type="text"
+                            class="w-full h-10 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
+                        />
+                    </div>
+                    <!-- Quantity (Count) -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                            {{ t('quantity') }}
+                        </label>
+                        <input
+                            v-model="filterCount"
+                            type="number"
+                            class="w-full h-10 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
+                        />
+                    </div>
+                    <!-- Payment Amount -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                            {{ t('payment') }}
+                        </label>
+                        <input
+                            v-model="filterTotalAmount"
+                            type="text"
+                            class="w-full h-10 rounded border-slate-300 dark:border-slate-650 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs focus:border-blue-500 focus:ring-blue-500 text-center font-semibold"
+                        />
+                    </div>
+                    <!-- Clear -->
+                    <div>
                         <button
                             @click="clearFilter"
-                            class="bg-[#6c757d] hover:bg-[#5a6268] text-white h-10 px-4 rounded text-sm font-semibold transition duration-150 shadow-sm flex items-center justify-center cursor-pointer flex-1"
+                            class="bg-[#6c757d] hover:bg-[#5a6268] text-white h-10 px-4 rounded text-xs font-semibold transition duration-150 shadow-sm flex items-center justify-center cursor-pointer w-full"
                         >
                             {{ t('clear') }}
                         </button>
@@ -397,75 +444,131 @@ onMounted(() => {
             <!-- Ledgers Table -->
             <div class="border border-slate-200 dark:border-slate-700 rounded overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-[14px] border-collapse">
-                        <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
+                    <table class="w-full text-center text-[14px] border-collapse border border-slate-350 dark:border-slate-700">
+                        <thead class="bg-slate-50 dark:bg-slate-900 border-b-[2px] border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold">
                             <tr>
-                                <th class="px-4 py-2.5 w-[12%]">{{ t('date') }}</th>
-                                <th class="px-4 py-2.5 w-[12%]">{{ t('type') }}</th>
-                                <th class="px-4 py-2.5 w-[20%]">{{ t('details') }}</th>
-                                <th class="px-4 py-2.5 w-[10%] text-center">{{ t('quantity') }}</th>
-                                <th class="px-4 py-2.5 w-[12%] text-right">{{ t('unit_price') }}</th>
-                                <th class="px-4 py-2.5 w-[12%] text-right">{{ t('total_price') }}</th>
-                                <th class="px-4 py-2.5 w-[12%] text-right">{{ t('payment') }}</th>
-                                <th class="px-4 py-2.5 w-[12%] text-right">{{ t('running_balance') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-12">#</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-28">{{ t('date') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-24">{{ t('type') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-20">{{ t('memo') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700">{{ t('gift') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-20"> {{ t('quantity') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-28">{{ t('total_price') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-28">{{ t('payment') }}</th>
+                                <th class="px-4 py-2.5 text-center border border-slate-300 dark:border-slate-700 w-32">{{ t('balance') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Opening Balance Row -->
-                            <tr class="bg-slate-100/50 dark:bg-slate-900/60 font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">
-                                <td class="px-4 py-3">{{ accountBook.formatted_created_at || new Date(accountBook.created_at).toLocaleDateString('en-GB') }}</td>
-                                <td class="px-4 py-3">{{ t('old') }}</td>
-                                <td class="px-4 py-3" colspan="5">Jer Forwarded</td>
-                                <td class="px-4 py-3 text-right text-slate-950 dark:text-white">{{ parseFloat(summary.opening_balance).toFixed(2) }}</td>
+                            <!-- Prepend Commission Row (if page 1, not open, and commission > 0) -->
+                            <tr v-if="entries.current_page === 1 && !accountBook.open && accountBook.commission > 0"
+                                class="border-b border-slate-300 dark:border-slate-700 bg-purple-50/20 dark:bg-purple-950/10 text-slate-800 dark:text-slate-200 font-semibold">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
+                                    <span>{{ t('closing') }}</span>
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">{{ t('commission') }}</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-semibold text-green-700 dark:text-green-400">
+                                    {{ parseFloat(accountBook.commission).toFixed(2) }}
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">
+                                    {{ parseFloat(summary.description_balance).toFixed(2) }}
+                                </td>
+                            </tr>
+
+                            <!-- Prepend Staff Expenses Row (if page 1, not open, and staff > 0) -->
+                            <tr v-if="entries.current_page === 1 && !accountBook.open && accountBook.staff > 0"
+                                class="border-b border-slate-300 dark:border-slate-700 bg-purple-50/20 dark:bg-purple-950/10 text-slate-800 dark:text-slate-200 font-semibold">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
+                                    <span>{{ t('closing') }}</span>
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">Staff Expenses</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-semibold text-green-700 dark:text-green-400">
+                                    {{ parseFloat(accountBook.staff).toFixed(2) }}
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">
+                                    {{ (parseFloat(summary.description_balance) + parseFloat(accountBook.commission)).toFixed(2) }}
+                                </td>
                             </tr>
 
                             <!-- Data Rows -->
                             <tr
-                                v-for="entry in entries.data"
+                                v-for="(entry, index) in entries.data"
                                 :key="entry.id"
-                                class="border-b border-slate-200 dark:border-slate-700 odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
+                                class="border-b border-slate-300 dark:border-slate-700 odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-800 dark:even:bg-slate-900/40 hover:bg-slate-100/40 dark:hover:bg-slate-700/30 text-slate-800 dark:text-slate-200"
                             >
-                                <td class="px-4 py-3">{{ entry.formatted_created_at }}</td>
-                                <td class="px-4 py-3">
-                                    <span v-if="entry.entry_type === 0" class="text-blue-600 dark:text-blue-400 font-semibold">{{ t('purchase') }}</span>
-                                    <span v-else-if="entry.entry_type === 2" class="text-green-600 dark:text-green-400 font-semibold">{{ t('payment') }}</span>
-                                    <span v-else-if="entry.entry_type === 5" class="text-purple-600 dark:text-purple-400 font-semibold">{{ t('closing') }}</span>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-medium">
+                                    {{ (entries.current_page - 1) * entries.per_page + index + 1 }}
                                 </td>
-                                <td class="px-4 py-3">
-                                    <template v-if="entry.gift_purchase_id">
-                                        <Link :href="route('gift-purchase.show', entry.gift_purchase_id)" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                                            Memo #{{ entry.gift_purchase_id }}
-                                        </Link>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                                            {{ entry.gift_name }}
-                                        </div>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">{{ entry.formatted_created_at }}</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
+                                    <span v-if="entry.entry_type === 0">{{ t('purchase') }}</span>
+                                    <span v-else-if="entry.entry_type === 2">{{ t('payment') }}</span>
+                                    <span v-else-if="entry.entry_type === 5">{{ t('closing') }}</span>
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
+                                    <Link v-if="entry.gift_purchase_id" :href="route('gift-purchase.show', entry.gift_purchase_id)" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                                        {{ entry.gift_purchase_id }}
+                                    </Link>
+                                    <span v-else>-</span>
+                                </td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
+                                    <template v-if="entry.entry_type === 0">
+                                        {{ formatGiftNames(entry.gift_name) }}
                                     </template>
-                                    <template v-else>
-                                        {{ entry.description || (entry.entry_type === 5 ? t('gift_supplier_payment') : '-') }}
+                                    <template v-else-if="entry.entry_type === 2">
+                                        {{ entry.account_name }}{{ entry.description ? ' (' + entry.description + ')' : '' }}
+                                    </template>
+                                    <template v-else-if="entry.entry_type === 5">
+                                        {{ entry.description || t('gift_supplier_payment') }}
                                         <div v-if="entry.account_name" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                                             Source: {{ entry.account_name }}
                                         </div>
                                     </template>
+                                    <template v-else>
+                                        {{ entry.description || '-' }}
+                                    </template>
                                 </td>
-                                <td class="px-4 py-3 text-center">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
                                     {{ entry.entry_type === 0 ? entry.count : '-' }}
                                 </td>
-                                <td class="px-4 py-3 text-right">
-                                    {{ entry.entry_type === 0 ? parseFloat(entry.unit_price).toFixed(2) : '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-right">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">
                                     {{ entry.entry_type === 0 ? parseFloat(entry.total_amount).toFixed(2) : '-' }}
                                 </td>
-                                <td class="px-4 py-3 text-right font-semibold text-green-700 dark:text-green-400">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-semibold text-green-700 dark:text-green-400">
                                     {{ entry.payment_amount > 0 ? parseFloat(entry.payment_amount).toFixed(2) : '-' }}
                                 </td>
-                                <td class="px-4 py-3 text-right font-bold">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">
                                     {{ parseFloat(entry.running_balance).toFixed(2) }}
                                 </td>
                             </tr>
 
+                            <!-- Append Opening Balance Row (if last page and opening_balance != 0) -->
+                            <tr v-if="entries.current_page === entries.last_page && parseFloat(summary.opening_balance) !== 0"
+                                class="bg-slate-100/50 dark:bg-slate-900/60 font-semibold text-slate-700 dark:text-slate-300 border-b border-slate-300 dark:border-slate-700">
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">{{ t('old') }}</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700">-</td>
+                                <td class="px-4 py-3 text-center border border-slate-300 dark:border-slate-700 font-bold">
+                                    {{ parseFloat(summary.opening_balance).toFixed(2) }}
+                                </td>
+                            </tr>
+
                             <tr v-if="entries.data.length === 0">
-                                <td colspan="8" class="px-6 py-10 text-center text-slate-500 dark:text-slate-400">
+                                <td colspan="9" class="px-6 py-10 text-center border border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400">
                                     {{ t('No records found.') }}
                                 </td>
                             </tr>
@@ -474,12 +577,7 @@ onMounted(() => {
                 </div>
 
                 <!-- Pagination -->
-                <div class="px-6 py-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-900/30">
-                    <div class="text-sm text-slate-600 dark:text-slate-400">
-                        Showing {{ entries.from || 0 }} to {{ entries.to || 0 }} of {{ entries.total || 0 }} entries
-                    </div>
-                    <Pagination :links="entries.links" @page-change="goToPage" />
-                </div>
+                <Pagination :pagination="entries" @page-changed="goToPage" />
             </div>
         </div>
     </AuthenticatedLayout>

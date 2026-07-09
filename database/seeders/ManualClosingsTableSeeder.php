@@ -18,7 +18,7 @@ class ManualClosingsTableSeeder extends Seeder
 
         \DB::table('manual_closings')->delete();
         
-        \DB::table('manual_closings')->insert(array (
+        \DB::table('manual_closings')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

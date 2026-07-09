@@ -18,7 +18,7 @@ class ReturnFromRetailEntriesTableSeeder extends Seeder
 
         \DB::table('return_from_retail_entries')->delete();
         
-        \DB::table('return_from_retail_entries')->insert(array (
+        \DB::table('return_from_retail_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,
@@ -9520,7 +9520,7 @@ class ReturnFromRetailEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-17 19:54:33',
             ),
         ));
-        \DB::table('return_from_retail_entries')->insert(array (
+        \DB::table('return_from_retail_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 509,
@@ -19022,7 +19022,7 @@ class ReturnFromRetailEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-25 12:55:30',
             ),
         ));
-        \DB::table('return_from_retail_entries')->insert(array (
+        \DB::table('return_from_retail_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1013,
@@ -28524,7 +28524,7 @@ class ReturnFromRetailEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-03 02:13:13',
             ),
         ));
-        \DB::table('return_from_retail_entries')->insert(array (
+        \DB::table('return_from_retail_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1531,
@@ -38026,7 +38026,7 @@ class ReturnFromRetailEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-05-05 10:52:21',
             ),
         ));
-        \DB::table('return_from_retail_entries')->insert(array (
+        \DB::table('return_from_retail_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2049,

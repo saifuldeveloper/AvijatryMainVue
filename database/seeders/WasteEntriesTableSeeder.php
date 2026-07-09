@@ -18,7 +18,7 @@ class WasteEntriesTableSeeder extends Seeder
 
         \DB::table('waste_entries')->delete();
         
-        \DB::table('waste_entries')->insert(array (
+        \DB::table('waste_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1,

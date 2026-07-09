@@ -19,6 +19,12 @@ use App\Http\Controllers\GiftController;
 use App\Http\Controllers\GiftSupplierController;
 use App\Http\Controllers\GiftPurchaseController;
 use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\RetailStoreController;
+use App\Http\Controllers\RetailStoreExpenseController;
+use App\Http\Controllers\ShoeController;
+use App\Http\Controllers\InventoryCheckController;
+use App\Http\Controllers\InventoryCheckEntryController;
+use App\Http\Controllers\InvoiceController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -144,17 +150,29 @@ Route::middleware('auth')->group(function () {
     Route::delete('factory/{id}/force-delete', [FactoryController::class, 'forceDelete'])->name('factory.forceDelete');
     Route::post('factory/{factory}/closing', [FactoryController::class, 'closing'])->name('factory.closing');
 
+    // Retail Store Routes
+    Route::resource('retail-store', RetailStoreController::class);
+    Route::post('retail-store/{id}/restore', [RetailStoreController::class, 'restore'])->name('retail-store.restore');
+    Route::delete('retail-store/{id}/force-delete', [RetailStoreController::class, 'forceDelete'])->name('retail-store.forceDelete');
+
+    // Retail Store Expense Routes
+    Route::post('retail-store-expense', [RetailStoreExpenseController::class, 'store'])->name('retail-store-expense.store');
+    Route::delete('retail-store-expense/{id}', [RetailStoreExpenseController::class, 'delete'])->name('retail-store-expense.delete');
+    Route::post('retail-store-expense/{id}/restore', [RetailStoreExpenseController::class, 'restore'])->name('retail-store-expense.restore');
+    Route::delete('retail-store-expense/{id}/force-delete', [RetailStoreExpenseController::class, 'forceDelete'])->name('retail-store-expense.forceDelete');
+
     // Factory Account Book / Ledger Routes
     Route::get('account-book/{accountBook}', [AccountBookController::class, 'show'])->name('account-book.show');
     Route::get('account-book/{accountBook}/closing', [AccountBookController::class, 'closingPage'])->name('account-book.closing');
     Route::post('account-book/{accountBook}/closing-store', [AccountBookController::class, 'closing'])->name('account-book.closing-store');
+    Route::get('account-book/{accountBook}/forward-balance', [AccountBookController::class, 'forwardBalance'])->name('account-book.forward-balance');
 
     // Factory Entry Routes
-    Route::post('factory/entry/store', [AccountBookController::class, 'entryStore'])->name('factory.entry.store');
-    Route::put('factory/entry/update/{id}', [AccountBookController::class, 'entryUpdate'])->name('factory.entry.update');
-    Route::delete('factory/entry/destroy/{id}', [AccountBookController::class, 'entryDestroy'])->name('factory.entry.destroy');
-    Route::post('factory/entry/restore/{id}', [AccountBookController::class, 'entryRestore'])->name('factory.entry.restore');
-    Route::delete('factory/entry/force-delete/{id}', [AccountBookController::class, 'entryForceDelete'])->name('factory.entry.forcedelete');
+    Route::post('factory/entry/store', [FactoryController::class, 'entryStore'])->name('factory.entry.store');
+    Route::put('factory/entry/update/{id}', [FactoryController::class, 'entryUpdate'])->name('factory.entry.update');
+    Route::delete('factory/entry/destroy/{id}', [FactoryController::class, 'entryDestroy'])->name('factory.entry.destroy');
+    Route::post('factory/entry/restore/{id}', [FactoryController::class, 'entryRestore'])->name('factory.entry.restore');
+    Route::delete('factory/entry/force-delete/{id}', [FactoryController::class, 'entryForceDelete'])->name('factory.entry.forcedelete');
 
     // Gift Routes
     Route::resource('gift', GiftController::class)->except(['show']);
@@ -177,15 +195,50 @@ Route::middleware('auth')->group(function () {
     Route::post('gift-purchases/restore/{id}', [GiftPurchaseController::class, 'restore'])->name('gift_purchases.restore');
     Route::delete('gift-purchases/force-delete/{id}', [GiftPurchaseController::class, 'forceDelete'])->name('gift_purchases.forceDelete');
 
+    // Purchase Routes
+    Route::resource('purchase', \App\Http\Controllers\PurchaseController::class);
+    Route::get('purchase/{purchase}/barcode', [\App\Http\Controllers\PurchaseController::class, 'barcode'])->name('purchase.barcode');
+    Route::post('purchase/restore/{id}', [\App\Http\Controllers\PurchaseController::class, 'restore'])->name('purchase.restore');
+    Route::delete('purchase/force-delete/{id}', [\App\Http\Controllers\PurchaseController::class, 'forceDelete'])->name('purchase.forceDelete');
+    Route::get('get/category-sizes', [\App\Http\Controllers\SizeController::class, 'getCategorySizes'])->name('get.category-sizes');
+
+    // Invoice / Sale Routes
+    Route::resource('invoice', InvoiceController::class)->except(['index']);
+    Route::get('invoice/{invoice}/force-delete', [InvoiceController::class, 'forceDelete'])->name('invoice.forceDelete');
+    Route::post('invoice/restore/{id}', [InvoiceController::class, 'restore'])->name('invoice.restore');
+
     // Bank Account Routes
     Route::resource('bank-account', BankAccountController::class);
     Route::delete('bank-account/{bank_account}/force-delete', [BankAccountController::class, 'forceDelete'])->name('bank-account.forceDelete');
     Route::post('bank-account/{bank_account}/restore', [BankAccountController::class, 'restore'])->name('bank-account.restore');
     Route::get('bank-account/entry/date/currection/{id}', [BankAccountController::class, 'entryDateCurrection'])->name('bank-account.entry.date.currection');
+
+    // Shoe Routes
+    Route::resource('shoe', ShoeController::class);
+    Route::get('shoe/show/{shoe}', [ShoeController::class, 'ajaxShow'])->name('ajax.shoe.show');
+    Route::post('shoe/download', [ShoeController::class, 'download'])->name('show.download');
+    Route::post('shoe/download/delete', [ShoeController::class, 'downloadDeleted'])->name('show.download.deleted');
+    Route::get('barcode', [ShoeController::class, 'barcodePage'])->name('shoe.barcode-page');
+    Route::post('barcode', [ShoeController::class, 'barcode'])->name('shoe.barcode');
+    Route::get('shoe/barcode/tr', [ShoeController::class, 'barcodeTr'])->name('tr.barcode');
+
+    // Inventory Check Routes
+    Route::resource('inventory-check', InventoryCheckController::class)->only(['index', 'create', 'store', 'show']);
+    Route::get('inventory-check/{id}/entries-data', [InventoryCheckController::class, 'getEntriesData'])->name('inventory-check.entries-data');
+    Route::get('inventory-check/{id}/remaining-data', [InventoryCheckController::class, 'getRemainingData'])->name('inventory-check.remaining-data');
+    Route::resource('inventory-check-entry', InventoryCheckEntryController::class)->only(['store']);
+    Route::get('inventory-check/{inventoryCheck}/complete', [InventoryCheckController::class, 'complete'])->name('inventory-check.complete');
+    Route::get('inventory-check/{inventoryCheck}/resume', [InventoryCheckController::class, 'resume'])->name('inventory-check.resume');
+    Route::post('inventory-check/{inventoryCheck}/resolve', [InventoryCheckController::class, 'resolve'])->name('inventory-check.resolve');
 });
 
-
-
+Route::get('images/{template}/{filename}', function ($template, $filename) {
+    $path = public_path("images/{$template}/{$filename}");
+    if (file_exists($path)) {
+        return response()->file($path);
+    }
+    return response()->file(public_path('img/shoe.png'));
+})->name('imagecache');
 
 require __DIR__.'/auth.php';
 

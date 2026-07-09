@@ -18,7 +18,7 @@ class BankAccountEntriesTableSeeder extends Seeder
 
         \DB::table('bank_account_entries')->delete();
         
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3,
@@ -9020,7 +9020,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-06-26 12:50:27',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 567,
@@ -18022,7 +18022,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-14 13:51:38',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1088,
@@ -27024,7 +27024,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-05-27 12:03:25',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 1589,
@@ -36026,7 +36026,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-07-10 12:24:14',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2092,
@@ -45028,7 +45028,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-08-19 11:12:01',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 2594,
@@ -54030,7 +54030,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-09-17 12:18:18',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3094,
@@ -63032,7 +63032,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-10-22 11:34:06',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 3599,
@@ -72034,7 +72034,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-11-16 19:24:37',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4109,
@@ -81036,7 +81036,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2025-12-13 15:23:34',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 4618,
@@ -90038,7 +90038,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-01-17 10:44:29',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5118,
@@ -99040,7 +99040,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-01 11:55:13',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 5618,
@@ -108042,7 +108042,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-15 11:20:19',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6118,
@@ -117044,7 +117044,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-25 12:04:03',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 6623,
@@ -126046,7 +126046,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-02-17 11:33:59',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7123,
@@ -135048,7 +135048,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-03-11 12:22:42',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 7625,
@@ -144050,7 +144050,7 @@ class BankAccountEntriesTableSeeder extends Seeder
                 'updated_at' => '2026-04-25 23:08:20',
             ),
         ));
-        \DB::table('bank_account_entries')->insert(array (
+        \DB::table('bank_account_entries')->insertOrIgnore(array (
             0 => 
             array (
                 'id' => 8125,

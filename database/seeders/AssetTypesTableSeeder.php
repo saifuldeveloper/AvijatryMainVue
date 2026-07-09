@@ -16,7 +16,9 @@ class AssetTypesTableSeeder extends Seeder
     {
         
 
-        \DB::table('asset_types')->delete();
+        if (\Schema::hasTable('asset_types')) {
+            \DB::table('asset_types')->delete();
+        }
         
         
         
