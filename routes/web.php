@@ -25,6 +25,7 @@ use App\Http\Controllers\ShoeController;
 use App\Http\Controllers\InventoryCheckController;
 use App\Http\Controllers\InventoryCheckEntryController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\WasteController;
 use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Session;
@@ -230,6 +231,27 @@ Route::middleware('auth')->group(function () {
     Route::get('inventory-check/{inventoryCheck}/complete', [InventoryCheckController::class, 'complete'])->name('inventory-check.complete');
     Route::get('inventory-check/{inventoryCheck}/resume', [InventoryCheckController::class, 'resume'])->name('inventory-check.resume');
     Route::post('inventory-check/{inventoryCheck}/resolve', [InventoryCheckController::class, 'resolve'])->name('inventory-check.resolve');
+
+    // Waste Routes
+    Route::controller(WasteController::class)->group(function () {
+        Route::get('waste/shoes', 'shoePage')->name('waste.shoes-page');
+        Route::get('waste/shoes-list', 'wasteShoesList')->name('waste.shoes.list');
+        Route::post('waste/shoes', 'shoe')->name('waste.shoes');
+        Route::post('waste/shoe/soft-delete/{id}', 'wasteShoetSoftDelete')->name('waste.shoe.softDelete');
+        Route::get('waste/shoe/restore/{id}', 'wasteShoeRestore')->name('waste.shoe.restore');
+        Route::get('waste/shoe/force-delete/{id}', 'wasteShoeForceDelete')->name('waste.shoe.forceDelete');
+
+        Route::get('waste/gifts', 'giftPage')->name('waste.gifts-page');
+        Route::get('waste/gifts/data', 'giftPageData')->name('waste.gifts.data');
+        Route::post('waste/gifts', 'gift')->name('waste.gifts');
+        Route::post('waste/gifts/soft-delete/{gift}', 'wasteGiftSoftDelete')->name('waste.gift.softDelete');
+        Route::post('waste/gifts/restore/{gift}', 'wasteGiftRestore')->name('waste.gift.restore');
+        Route::post('waste/gifts/force-delete/{gift}', 'wasteGiftForceDelete')->name('waste.gift.forceDelete');
+
+        Route::get('party-gift', 'partyWasteGift')->name('waste.party.gift');
+        Route::get('party-shoe-gift-data', 'partyShoeGiftData')->name('party.shoe.gift.data');
+        Route::get('party-gift-data', 'partyGiftData')->name('party.gift.data');
+    });
 });
 
 Route::get('images/{template}/{filename}', function ($template, $filename) {
